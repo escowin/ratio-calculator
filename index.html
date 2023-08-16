@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ratio calculator</title>
-    <link rel="stylesheet" href="./src/css/style.css"/>
+    <link rel="stylesheet" href="./src/css/style.css" />
     <script defer src="./src/js/script.js"></script>
-</head>
-<body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-</body>
+  </head>
+  <body>
+    <header>
+        <h1>Ratio calculator</h1>
+    </header>
+    <main>
+      <form id="ratio-form">
+        <label> A
+          <input id="num-1" />
+        </label>
+        <label> B
+          <input id="num-2" />
+        </label>
+        <label> C
+          <input id="num-3" />
+        </label>
+        <label> D
+          <input id="num-4" />
+        </label>
+        <button type="submit" id="submit">enter</button>
+      </form>
+    </main>
+    <footer>
+        <a href="https://escowin.github.io/ratio-calculator">
+            &copy;<span id="date"></span>
+            Edwin m. escobar
+        </a>
+    </footer>
+  </body>
 </html>
