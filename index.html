@@ -3,16 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e1c1c" />
+    <meta name="description" content="lightweight PWA ratio calculator" />
     <title>Ratio calculator</title>
-    <link rel="stylesheet" href="./src/css/style.css" />
-    <script defer src="./src/js/script.js"></script>
+    <link rel="manifest" href="./dist/manifest.json" />
+    <script defer src="./dist/app.bundle.js"></script>
+    <script defer>
+      (function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker
+            .register("./service-worker.js")
+            .then(() => console.log("registered service worker"))
+            .catch((error) =>
+              console.log("service worker registration failed")
+            );
+        }
+      })();
+    </script>
   </head>
   <body>
     <header>
       <h1>Ratio calculator</h1>
     </header>
     <main>
-      
       <form id="ratio-form">
         <h2>A/B : C/D</h2>
         <label>

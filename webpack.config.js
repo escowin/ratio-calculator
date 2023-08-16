@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
+// const webpack = require("webpack");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 
@@ -25,7 +25,7 @@ module.exports = {
     plugins: [
       new BundleAnalyzerPlugin({
         // "static" generates `report.html`. "disable" stops report generation
-        analyzerMode: "static",
+        analyzerMode: "disable",
       }),
       new WebpackPwaManifest({
         // `manifest.json` object key-values
