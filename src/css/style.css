@@ -1,8 +1,7 @@
 :root {
-    --dark: rgb(30, 28, 28);
+    --dark: rgb(38, 49, 60);
     --light: rgb(189, 206, 215);
     --overlay: rgba(134, 144, 147, 0.5);
-    --shadow-bx: 0 0 2rem var(--dark)
 }
 
 * {
@@ -22,6 +21,10 @@ body {
     font-variant: small-caps;
 }
 
+button {
+    border: none;
+    border-radius: .25rem;
+}
 a {
     color: inherit;
     text-decoration: none;
@@ -32,6 +35,8 @@ footer {
 }
 
 main {
+    background-color: var(--light);
+    color: var(--dark);
     flex-grow: 1;
     border-radius: .25rem;
     outline: 1px solid var(--light);
@@ -49,10 +54,10 @@ input {
     border: none;
     border-radius: .25rem;
     height: 100%;
-    box-shadow: var(--shadow-bx);
+    padding: .25rem .5rem;
 }
 
-input, span {
+input, #ratio-form span {
     margin-left: 1rem;
 }
 

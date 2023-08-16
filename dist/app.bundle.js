@@ -15,7 +15,7 @@
   \**********************************/
 /***/ ((module) => {
 
-eval("function calculator(num1, num2, num3) {\n  return (num1/num2)*num3;\n}\n\nmodule.exports = { calculator };\n\n\n//# sourceURL=webpack://ratio-calculator/./src/js/lib/Calculator.js?");
+eval("function calculator(num1, num2, num3) {\n  return (num2/num1)*num3;\n}\n\nmodule.exports = { calculator };\n\n\n//# sourceURL=webpack://ratio-calculator/./src/js/lib/Calculator.js?");
 
 /***/ }),
 
