@@ -1,4 +1,4 @@
-const { calculator } = require("../src/js/script");
+const { calculator } = require("../src/js/lib/Calculator");
 
 test("returns value that is consistent with established ratio input values", () => {
   const num1 = 16;
