@@ -1,9 +1,10 @@
 const { calculator } = require("../src/js/script");
 
-test("numbers passed are logged in function", () => {
+test("returns value that is consistent with established ratio input values", () => {
   const num1 = 16;
   const num2 = 9;
-  const num3 = 1080;
-  
-  expect(calculator(num1, num2, num3)).toEqual([num1, num2, num3]);
+  const num3 = 1024;
+  const num4 = (num1/num2)*num3
+
+  expect(calculator(num1, num2, num3)).toEqual(num4);
 });
