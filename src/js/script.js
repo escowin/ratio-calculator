@@ -1,4 +1,4 @@
-// const { calculator } = require("./lib/Calculator")
+const { calculator } = require("./lib/Calculator")
 
 // dom elements
 const dateEl = document.getElementById("date");
@@ -21,10 +21,12 @@ function displayDate() {
 
 function displayAnswer(e) {
     e.preventDefault()
-    console.log(num1El.value)
-    console.log(num2El.value)
-    console.log(num3El.value)
-    console.log(num4El.value)
+    const num1 = num1El.value
+    const num2 = num2El.value
+    const num3 = num3El.value
+    
+    const num4 = calculator(num1, num2, num3)
+    num4El.innerText = num4
 }
 
 // calls

@@ -1,0 +1,53 @@
+:root {
+    --dark: rgb(30, 28, 28);
+    --light: rgb(189, 206, 215);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: var(--light);
+    background-color: var(--dark);
+    padding: 10vw;
+    align-items: center;
+    text-align: center;
+    font-variant: small-caps;
+    gap: 1rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main {
+    border-radius: .25rem;
+    outline: 1px solid var(--light);
+    padding: 2.5vw 5vw;
+}
+
+button, h2 {
+    grid-column: span 2;
+}
+
+input {
+    width: 4rem;
+}
+
+#ratio-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 50vw;
+    gap: .5rem 1rem;
+    text-align: start;
+}
+
+h2 {
+    text-align: center;
+}
