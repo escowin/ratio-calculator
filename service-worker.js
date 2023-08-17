@@ -1,5 +1,5 @@
 const APP_PREFIX = "RatioCalculator-";
-const VERSION = "1.0.1";
+const VERSION = "1.0.2";
 const CACHE_NAME = APP_PREFIX + VERSION;
 
 // cache of essential files
