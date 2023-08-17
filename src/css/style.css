@@ -57,10 +57,6 @@ input {
     padding: .25rem .5rem;
 }
 
-input, #ratio-form span {
-    margin-left: 1rem;
-}
-
 #ratio-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

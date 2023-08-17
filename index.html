@@ -7,6 +7,7 @@
     <meta name="description" content="lightweight PWA ratio calculator" />
     <title>Ratio calculator</title>
     <link rel="manifest" href="./dist/manifest.json" />
+    <link rel="stylesheet" href="./src/css/style.css" />
     <script defer src="./dist/app.bundle.js"></script>
     <script defer>
       (function () {
@@ -26,26 +27,35 @@
       <h1>Ratio calculator</h1>
     </header>
     <main>
-      <form id="ratio-form">
-        <h2>a : b = c : d</h2>
-        <label>
-          A
-          <input type="number" id="num-1" />
-        </label>
-        <label>
-          B
-          <input type="number" id="num-2" />
-        </label>
-        <label>
-          C
-          <input type="number" id="num-3" />
-        </label>
-        <p>
-          D
-          <span id="num-4"></span>
-        </p>
-        <button type="submit" id="submit">enter</button>
-      </form>
+      <section id="form-section">
+        <form id="ratio-form">
+          <!-- <h2>a : b = c : d</h2> -->
+          <article>
+            <label for="num-1">A</label>
+            <input type="number" id="num-1" />
+          </article>
+
+          <article>
+            <label for="num-2">B</label>
+            <input type="number" id="num-2" />
+          </article>
+
+          <article>
+            <label for="num-3">C</label>
+            <input type="number" id="num-3" />
+          </article>
+
+          <article>
+            <p>D</p>
+            <span id="num-4"></span>
+          </article>
+        </form>
+      </section>
+
+      <section id="btn-section">
+        <button form="ratio-form" type="reset" id="clear">clear</button>
+        <button form="ratio-form" type="submit" id="submit">enter</button>
+      </section>
     </main>
     <footer>
       <a href="https://escowin.github.io/ratio-calculator">

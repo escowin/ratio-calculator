@@ -1,4 +1,4 @@
-import "../css/style.css";
+// import "../css/style.css";
 const { calculator } = require("./lib/Calculator");
 
 // dom elements
@@ -25,6 +25,7 @@ function displayAnswer(e) {
   const num1 = num1El.value;
   const num2 = num2El.value;
   const num3 = num3El.value;
+  console.log(num1, num2, num3)
 
   const num4 = calculator(num1, num2, num3);
   num4El.innerText = num4;
