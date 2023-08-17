@@ -22,39 +22,35 @@
       })();
     </script>
   </head>
-  <body>
+  <body class="flex">
     <header>
       <h1>Ratio calculator</h1>
     </header>
-    <main>
+    <main class="flex">
       <section id="form-section">
-        <form id="ratio-form">
-          <!-- <h2>a : b = c : d</h2> -->
-          <article>
-            <label for="num-1">A</label>
-            <input type="number" id="num-1" />
-          </article>
-
-          <article>
-            <label for="num-2">B</label>
-            <input type="number" id="num-2" />
-          </article>
-
-          <article>
-            <label for="num-3">C</label>
-            <input type="number" id="num-3" />
-          </article>
-
-          <article>
-            <p>D</p>
-            <span id="num-4"></span>
+        <form class="flex" id="ratio-form">
+          <h2>a : b = c : d</h2>
+          <article class="flex">
+            <label class="flex" for="num-1"> A
+              <input type="number" id="num-1" aria-label="A" />
+            </label>
+            :
+            <label class="flex" for="num-2"> B
+              <input type="number" id="num-2" aria-label="B" />
+            </label>
+            =
+            <label class="flex" for="num-3"> C
+              <input type="number" id="num-3" aria-label="C" />
+            </label>
+            :
+            <p id="num-4"></p>
           </article>
         </form>
       </section>
 
-      <section id="btn-section">
-        <button form="ratio-form" type="reset" id="clear">clear</button>
+      <section class="flex" id="btn-section">
         <button form="ratio-form" type="submit" id="submit">enter</button>
+        <button form="ratio-form" type="reset" id="clear">clear</button>
       </section>
     </main>
     <footer>
