@@ -1,4 +1,4 @@
-import "../css/style.css";
+// import "../css/style.css";
 const { calculator } = require("./lib/Calculator");
 
 // dom elements
@@ -26,19 +26,27 @@ function displayAnswer(e) {
   const num1 = num1El.value;
   const num2 = num2El.value;
   const num3 = num3El.value;
-  console.log(num1, num2, num3);
-
   const num4 = calculator(num1, num2, num3);
-  num4El.innerText = num4;
+  num4El.innerText = Math.round(num4);
 }
 
 function clearAnswer() {
   if (num4El.innerText !== "") {
-    num4El.innerText = ""
+    num4El.innerText = "";
   }
 }
 
-// calls
+// development loads source stylesheet
+function development() {
+  const stylesheet = document.createElement("link");
+  stylesheet.setAttribute("rel", "stylesheet");
+  stylesheet.setAttribute("href", "./src/css/style.css");
+  document.head.appendChild(stylesheet);
+}
+
+development();
+
+// production calls
 displayDate();
 ratioForm.addEventListener("submit", (e) => displayAnswer(e));
 clearBtn.addEventListener("click", () => clearAnswer());
