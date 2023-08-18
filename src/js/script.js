@@ -1,4 +1,17 @@
+// DEVELOPMENT 
+function development() {
+  // loads source stylesheet
+  const stylesheet = document.createElement("link");
+  stylesheet.setAttribute("rel", "stylesheet");
+  stylesheet.setAttribute("href", "./src/css/style.css");
+  document.head.appendChild(stylesheet);
+}
+
+development();
+
+// PRODUCTION
 // import "../css/style.css";
+
 const { calculator } = require("./lib/Calculator");
 
 // dom elements
@@ -35,16 +48,6 @@ function clearAnswer() {
     num4El.innerText = "";
   }
 }
-
-// development loads source stylesheet
-function development() {
-  const stylesheet = document.createElement("link");
-  stylesheet.setAttribute("rel", "stylesheet");
-  stylesheet.setAttribute("href", "./src/css/style.css");
-  document.head.appendChild(stylesheet);
-}
-
-development();
 
 // production calls
 displayDate();
