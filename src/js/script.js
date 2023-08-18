@@ -35,11 +35,13 @@ function displayDate() {
 }
 
 function displayAnswer(e) {
+  // prevents input values from disappearing
   e.preventDefault();
 
+  // passes values into instantiated object as constructor arguments
   const calculator = new Calculator(num1El.value, num2El.value, num3El.value);
+  // displays the calculated remaining ratio value
   num4El.innerText = Math.round(calculator.calculateNum());
-  console.log(calculator);
 }
 
 function clearAnswer() {
