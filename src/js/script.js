@@ -27,12 +27,10 @@ function displayAnswer(e) {
   // prevents input values from disappearing
   e.preventDefault();
 
-  if (num4El === "") {
-    console.log("empty")
-  }
   // passes values into instantiated object as constructor arguments
   const calculator = new Calculator(num1El.value, num2El.value, num3El.value, num4El.value);
   // displays the calculated remaining ratio value
+  // note: change to dynamic numEl based on which value is an empty string
   num4El.value = Math.round(calculator.calculateNum());
 }
 

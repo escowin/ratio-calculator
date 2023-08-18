@@ -7,6 +7,10 @@ class Calculator {
   }
 
   calculateNum() {
+    // A : B = ? : D
+    if (this.num3 === "") {
+      return this.num4 * (this.num1/this.num2)
+    }
     // A : B = C : ?
     if (this.num4 === "") {
       return (this.num2 / this.num1) * this.num3;
