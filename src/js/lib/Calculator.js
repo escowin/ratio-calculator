@@ -1,7 +1,3 @@
-// function calculator(num1, num2, num3) {
-//   return (num2/num1)*num3;
-// }
-
 class Calculator {
   constructor(num1, num2, num3) {
     this.num1 = num1;

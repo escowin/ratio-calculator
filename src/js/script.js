@@ -1,4 +1,4 @@
-// DEVELOPMENT 
+// DEVELOPMENT
 function development() {
   // loads source stylesheet
   const stylesheet = document.createElement("link");
@@ -12,7 +12,7 @@ development();
 // PRODUCTION
 // import "../css/style.css";
 
-const { calculator } = require("./lib/Calculator");
+const Calculator = require("./lib/Calculator");
 
 // dom elements
 const dateEl = document.getElementById("date");
@@ -36,11 +36,10 @@ function displayDate() {
 
 function displayAnswer(e) {
   e.preventDefault();
-  const num1 = num1El.value;
-  const num2 = num2El.value;
-  const num3 = num3El.value;
-  const num4 = calculator(num1, num2, num3);
-  num4El.innerText = Math.round(num4);
+
+  const calculator = new Calculator(num1El.value, num2El.value, num3El.value);
+  num4El.innerText = Math.round(calculator.calculateNum());
+  console.log(calculator);
 }
 
 function clearAnswer() {
