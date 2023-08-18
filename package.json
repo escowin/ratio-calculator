@@ -1,6 +1,6 @@
 {
   "name": "ratio-calculator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "lightweight PWA that uses JavaScript math to calculate ratios",
   "main": "index.js",
   "scripts": {

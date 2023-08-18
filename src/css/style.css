@@ -25,13 +25,13 @@ a {
 
 body {
     background-color: var(--light);
-    border: none;
     color: var(--dark);
 }
 
 button {
     background-color: var(--dark);
     color: var(--light);
+    border: none;
 }
 
 #ratio-form {
