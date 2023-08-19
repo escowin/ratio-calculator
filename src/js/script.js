@@ -39,8 +39,6 @@ function displayAnswer(e) {
   
   // displays the calculated remaining ratio value
   const emptyEl = numEls.find(el => el.value === "");
-  console.log(emptyEl);
-  console.log(emptyEl.value);
   emptyEl.value = Math.round(calculator.calculateNum());
 }
 
