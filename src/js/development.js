@@ -7,4 +7,4 @@ function development() {
     document.head.appendChild(stylesheet);
   }
   
-development();
+module.exports = { development }
