@@ -12,6 +12,8 @@ const num4El = document.getElementById("num-4");
 const ratioForm = document.getElementById("ratio-form");
 const clearBtn = document.getElementById("clear");
 
+const numEls = [num1El, num2El, num3El, num4El];
+
 // functions
 function displayDate() {
   let date = new Date().getFullYear();
@@ -28,10 +30,18 @@ function displayAnswer(e) {
   e.preventDefault();
 
   // passes values into instantiated object as constructor arguments
-  const calculator = new Calculator(num1El.value, num2El.value, num3El.value, num4El.value);
+  const calculator = new Calculator(
+    num1El.value,
+    num2El.value,
+    num3El.value,
+    num4El.value
+  );
+  
   // displays the calculated remaining ratio value
-  // note: change to dynamic numEl based on which value is an empty string
-  num4El.value = Math.round(calculator.calculateNum());
+  const emptyEl = numEls.find(el => el.value === "");
+  console.log(emptyEl);
+  console.log(emptyEl.value);
+  emptyEl.value = Math.round(calculator.calculateNum());
 }
 
 function clearAnswer() {
