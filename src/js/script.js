@@ -6,12 +6,10 @@ const Calculator = require("./lib/Calculator");
 // dom elements
 const dateEl = document.getElementById("date");
 const ratioForm = document.getElementById("ratio-form");
-const numEls = [
-  document.getElementById("num-1"),
-  document.getElementById("num-2"),
-  document.getElementById("num-3"),
-  document.getElementById("num-4"),
-];
+const numEls = [];
+for (let i = 1; i <= 4; i++) {
+  numEls.push(document.getElementById(`num-${i}`));
+}
 
 // functions
 function displayDate() {
