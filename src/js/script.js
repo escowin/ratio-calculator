@@ -38,6 +38,16 @@ function displayAnswer(e) {
   emptyEl.value = Math.round(calculator.calculateNum());
 }
 
+function adjustInputWidth(numEl) {
+  console.log(numEl)
+  console.log("value " + numEl.target.value)
+  console.log("length " + numEl.target.value.length)
+  
+}
+
 // production calls
 displayDate();
 ratioForm.addEventListener("submit", (e) => displayAnswer(e));
+numEls.forEach((el) =>{
+  el.addEventListener("input", (el) => adjustInputWidth(el))}
+);
