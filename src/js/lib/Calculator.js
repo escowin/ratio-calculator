@@ -8,21 +8,17 @@ class Calculator {
 
   // A : B = C : D
   calculateNum() {
-    // a = (c * b) / d
-    if (this.num1 === "") {
-      return (this.num3 * this.num2) / this.num4
-    }
-    // b = (a * d) / c
-    if (this.num2 === "") {
-      return (this.num1 * this.num4) / this.num3
-    }
-    // c = b/a * d
-    if (this.num3 === "") {
-      return (this.num1/this.num2) * this.num4
-    }
-    // d = b/a * c
-    if (this.num4 === "") {
-      return (this.num2 / this.num1) * this.num3;
+    switch (true) {
+      case this.num1 === "":
+        return (this.num3 * this.num2) / this.num4;
+      case this.num2 === "":
+        return (this.num1 * this.num4) / this.num3;
+      case this.num3 === "":
+        return (this.num1 / this.num2) * this.num4;
+      case this.num4 === "":
+        return (this.num2 / this.num1) * this.num3;
+      default:
+        return console.log("invalid input");
     }
   }
 }
