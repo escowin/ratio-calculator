@@ -129,6 +129,16 @@ eval("class Calculator {\n  constructor(num1, num2, num3, num4) {\n    this.num1
 
 /***/ }),
 
+/***/ "./src/js/lib/Display.js":
+/*!*******************************!*\
+  !*** ./src/js/lib/Display.js ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const Calculator = __webpack_require__(/*! ./Calculator */ \"./src/js/lib/Calculator.js\");\r\n\r\nclass Display extends Calculator {\r\n  constructor(num1, num2, num3, num4) {\r\n    // inherited Calculator properties\r\n    super(num1, num2, num3, num4);\r\n    this.year = new Date().getFullYear();\r\n    this.clearBtn = document.getElementById(\"clear\")\r\n  }\r\n\r\n  // methods | domFunction() {...}\r\n  displayDate() {\r\n    const dateEl = document.getElementById(\"date\");\r\n    dateEl.innerText = this.year;\r\n    console.log(`\r\n    \\u00A9 ${this.year} Edwin M. Escobar\r\n    https://github.com/escowin/ratio-calculator\r\n    `);\r\n  }\r\n}\r\n\r\nmodule.exports = Display;\n\n//# sourceURL=webpack://ratio-calculator/./src/js/lib/Display.js?");
+
+/***/ }),
+
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
@@ -136,7 +146,7 @@ eval("class Calculator {\n  constructor(num1, num2, num3, num4) {\n    this.num1
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ \"./src/css/style.css\");\n// PRODUCTION\n\n\n// global variables\nconst Calculator = __webpack_require__(/*! ./lib/Calculator */ \"./src/js/lib/Calculator.js\");\nconst clearBtn = document.getElementById(\"clear\")\nconst ratioForm = document.getElementById(\"ratio-form\");\nconst numEls = [];\nfor (let i = 1; i <= 4; i++) {\n  numEls.push(document.getElementById(`num-${i}`));\n}\n\n// functions\nfunction adjustWidth(numEl) {\n  let num = numEl.value.length;\n  numEl.style.width = `${num}rem`;\n}\n\nfunction displayAnswer(e) {\n  e.preventDefault();\n  // extracts, destructures, and assigns values from dom elements to instantiated object\n  const nums = numEls.map((numEl) => numEl.value);\n  const [num1, num2, num3, num4] = nums;\n  const calculator = new Calculator(num1, num2, num3, num4);\n\n  // displays the calculated remaining ratio value\n  const emptyEl = numEls.find((el) => el.value === \"\");\n  emptyEl.value = Math.round(calculator.calculateNum());\n  emptyEl.style.width = `${emptyEl.value.length}rem`\n}\n\nfunction displayDate() {\n  let date = new Date().getFullYear();\n  const dateEl = document.getElementById(\"date\");\n  dateEl.innerText = date;\n\n  console.log(`\n    \\u00A9 ${date} Edwin M. Escobar\n    https://github.com/escowin/ratio-calculator\n    `);\n}\n\nfunction resetWidth() {\n  numEls.forEach(el => el.style.width = \"1rem\")\n}\n\n// calls\ndisplayDate();\nnumEls.forEach((el) => el.addEventListener(\"input\", (el) => adjustWidth(el.target)));\nratioForm.addEventListener(\"submit\", (e) => displayAnswer(e));\nclearBtn.addEventListener(\"click\", () => resetWidth())\n\n//# sourceURL=webpack://ratio-calculator/./src/js/script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ \"./src/css/style.css\");\n// PRODUCTION\n\n\n// global variables\nconst Calculator = __webpack_require__(/*! ./lib/Calculator */ \"./src/js/lib/Calculator.js\");\nconst Display = __webpack_require__(/*! ./lib/Display */ \"./src/js/lib/Display.js\");\nconst clearBtn = document.getElementById(\"clear\")\nconst ratioForm = document.getElementById(\"ratio-form\");\nconst numEls = [];\nfor (let i = 1; i <= 4; i++) {\n  numEls.push(document.getElementById(`num-${i}`));\n}\n\nconst display = new Display()\ndisplay.displayDate()\n\n// functions\nfunction adjustWidth(numEl) {\n  let num = numEl.value.length;\n  numEl.style.width = `${num}rem`;\n}\n\nfunction displayAnswer(e) {\n  e.preventDefault();\n  // extracts, destructures, and assigns values from dom elements to instantiated object\n  const nums = numEls.map((numEl) => numEl.value);\n  const [num1, num2, num3, num4] = nums;\n  const calculator = new Calculator(num1, num2, num3, num4);\n\n  // displays the calculated remaining ratio value\n  const emptyEl = numEls.find((el) => el.value === \"\");\n  emptyEl.value = Math.round(calculator.calculateNum());\n  emptyEl.style.width = `${emptyEl.value.length}rem`\n}\n\nfunction resetWidth() {\n  numEls.forEach(el => el.style.width = \"1rem\")\n}\n\n// calls\nnumEls.forEach((el) => el.addEventListener(\"input\", (el) => adjustWidth(el.target)));\nratioForm.addEventListener(\"submit\", (e) => displayAnswer(e));\nclearBtn.addEventListener(\"click\", () => resetWidth())\n\n//# sourceURL=webpack://ratio-calculator/./src/js/script.js?");
 
 /***/ })
 

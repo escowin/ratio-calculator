@@ -11,3 +11,10 @@ test("object inherits Calculator properties", () => {
   expect(display.num3).toBe(3);
   expect(display.num4).toBe("");
 });
+
+test("object gets the current date", () => {
+  const display = new Display();
+  const year = new Date().getFullYear()
+  
+  expect(display.year).toEqual(year)
+})
