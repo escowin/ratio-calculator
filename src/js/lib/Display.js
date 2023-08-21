@@ -3,8 +3,8 @@ const Calculator = require("./Calculator");
 class Display {
   constructor() {
     this.dateEl = document.getElementById("date");
-    this.clearBtn = document.getElementById("clear");
     this.form = document.getElementById("ratio-form");
+    this.clearBtn = document.getElementById("clear");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
@@ -20,16 +20,7 @@ class Display {
     https://github.com/escowin/ratio-calculator
     `);
   }
-
-  adjustWidth(numEl) {
-    let num = numEl.value.length;
-    numEl.style.width = `${num}rem`;
-  }
-
-  resetWidth() {
-    this.numEls.forEach((el) => (el.style.width = "1rem"));
-  }
-
+  
   displayAnswer(e) {
     e.preventDefault();
     // extracts, destructures, and assigns values from dom elements to instantiated object
@@ -39,8 +30,17 @@ class Display {
 
     // displays the calculated remaining ratio value
     const emptyEl = this.numEls.find((el) => el.value === "");
-    emptyEl.value = Math.round(calculator.calculateNum());
+    emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
+  }
+
+  adjustWidth(numEl) {
+    let num = numEl.value.length;
+    numEl.style.width = `${num}rem`;
+  }
+
+  resetWidth() {
+    this.numEls.forEach((el) => (el.style.width = "1rem"));
   }
 }
 

@@ -64,7 +64,8 @@ label {
 
 /* text */
 body,
-button {
+button,
+h1 {
     font-size: 1.5rem;
 }
 
@@ -72,7 +73,8 @@ footer {
     font-size: .85rem;
 }
 
-h2, input {
+h2,
+input {
     font-size: 1.15rem;
 }
 
@@ -82,22 +84,27 @@ h2, input {
 }
 
 /* box */
-body, label, main, #ratio-form {
+body,
+label,
+main,
+#ratio-form {
     flex-direction: column;
 }
 
 body {
     align-items: center;
     gap: var(--gap);
-    padding: 10vw 3vw;
+    padding: 10vw 5.63vw;
 }
 
-button, #ratio-form {
+button,
+#ratio-form {
     border-radius: .5rem;
     padding: .5rem 1rem;
 }
 
-header, main {
+header,
+main {
     width: 100%;
 }
 

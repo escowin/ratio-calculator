@@ -5,7 +5,20 @@
 [Repo](https://github.com/escowin/ratio-calculator) |
 [Live URL](https://escowin.github.io/ratio-calculator)
     
-Lightweight PWA ratio calculator built up through JavaScript Math & Test Driven Development. Wrote this to have a personally-useful app while practicing good workflow.
+A lightweight PWA ratio calculator that calculates the remaining value from three given input-values. The development of this app was an exercise in array iteration, object oriented programming, and test driven development in order to streamline a codebase built around separation of concerns.
+
+This app came about as a reaction to previous PWA development. When running builds for [sun-tracker](https://github.com/escowin/sun-tracker), I took notice of the size `node_modules` would occupy in each bundle. By not using dependencies in this application, I have been able to further my understanding of native JavaScript, OOP, and TDD while also keeping the file size of `app.bundle.js` as small as possible.  
+
+### Development highlights:
+- array variable objects defined through `for` loop iteration
+- maintained data consitency between dom & calculator through iteration, array destructuring, object instantiation, and strict equality.
+- building up application logic through TDD
+
+### Future development:
+- Class inheritance between `Display` & `Calculator`
+- Parameter elmination within `Display` class methods
+- Streamline statement evaluations within `Calculator` method
+- Expand jest-environment jsdom TDD
 
 ## Table of Contents
 - [Installation](#installation)
