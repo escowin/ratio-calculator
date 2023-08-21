@@ -2,9 +2,9 @@ const Calculator = require("./Calculator");
 
 class Display {
   constructor() {
-    this.year = new Date().getFullYear();
+    this.dateEl = document.getElementById("date");
     this.clearBtn = document.getElementById("clear");
-    this.ratioForm = document.getElementById("ratio-form");
+    this.form = document.getElementById("ratio-form");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
@@ -13,10 +13,10 @@ class Display {
 
   // methods | domFunction() {...}
   displayDate() {
-    const dateEl = document.getElementById("date");
-    dateEl.innerText = this.year;
+    const year = new Date().getFullYear();
+    this.dateEl.innerText = year;
     console.log(`
-    \u00A9 ${this.year} Edwin M. Escobar
+    \u00A9 ${year} Edwin M. Escobar
     https://github.com/escowin/ratio-calculator
     `);
   }
@@ -26,19 +26,19 @@ class Display {
     numEl.style.width = `${num}rem`;
   }
 
-  resetWidth(numEls) {
-    numEls.forEach((el) => (el.style.width = "1rem"));
+  resetWidth() {
+    this.numEls.forEach((el) => (el.style.width = "1rem"));
   }
 
-  displayAnswer(e, numEls) {
+  displayAnswer(e) {
     e.preventDefault();
     // extracts, destructures, and assigns values from dom elements to instantiated object
-    const nums = numEls.map((numEl) => numEl.value);
+    const nums = this.numEls.map((numEl) => numEl.value);
     const [num1, num2, num3, num4] = nums;
     const calculator = new Calculator(num1, num2, num3, num4);
 
     // displays the calculated remaining ratio value
-    const emptyEl = numEls.find((el) => el.value === "");
+    const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum());
     emptyEl.style.width = `${emptyEl.value.length}rem`;
   }
