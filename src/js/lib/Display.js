@@ -3,6 +3,12 @@ const Calculator = require("./Calculator");
 class Display {
   constructor() {
     this.year = new Date().getFullYear();
+    this.clearBtn = document.getElementById("clear");
+    this.ratioForm = document.getElementById("ratio-form");
+    this.numEls = [];
+    for (let i = 1; i <= 4; i++) {
+      this.numEls.push(document.getElementById(`num-${i}`));
+    }
   }
 
   // methods | domFunction() {...}

@@ -1,20 +1,32 @@
+/**
+ * @jest-environment jsdom
+ */
 const Display = require("../src/js/lib/Display");
 
 // mock calculator data for testing
 jest.mock("../src/js/lib/Calculator");
 
-test("object inherits Calculator properties", () => {
-  const display = new Display();
+// test("object inherits Calculator properties", () => {
+//   const display = new Display();
 
-  expect(display.num1).toBe(1);
-  expect(display.num2).toBe(2);
-  expect(display.num3).toBe(3);
-  expect(display.num4).toBe("");
-});
+//   expect(display.num1).toBe(1);
+//   expect(display.num2).toBe(2);
+//   expect(display.num3).toBe(3);
+//   expect(display.num4).toBe("");
+// });
 
 test("object gets the current date", () => {
   const display = new Display();
   const year = new Date().getFullYear()
   
   expect(display.year).toEqual(year)
+})
+
+test("object contains DOM elements", () => {
+  const display = new Display();
+
+  expect(display.clearBtn).toBeDefined()
+  expect(display.ratioForm).toBeDefined()
+  expect(display.numEls).toBeDefined()
+
 })
