@@ -7,13 +7,14 @@ class Memory {
     let ratios = localStorage.getItem("ratios")
 
     if (!ratios) {
-      localStorage.setItem("ratios", []);
+      localStorage.setItem("ratios", JSON.stringify([]));
     }
-    return ratios;
+    return JSON.parse(ratios);
   }
 
   saveRatio(ratio) {
-    return this.memory.push(ratio)
+    this.memory.push(ratio);
+    localStorage.setItem("ratios", JSON.stringify(this.memory))
   }
 }
 
