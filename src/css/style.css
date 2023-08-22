@@ -47,8 +47,8 @@ button:hover {
     color: var(--dark);
 }
 
-#ratio-form {
-    background-color: var(--overlay);
+footer {
+    color: var(--overlay);
 }
 
 input {
@@ -60,6 +60,10 @@ input {
 label {
     border-bottom: 2px solid var(--overlay);
     color: transparent;
+}
+
+#ratio-form {
+    background-color: var(--overlay);
 }
 
 /* text */
@@ -93,8 +97,9 @@ main,
 
 body {
     align-items: center;
-    gap: var(--gap);
-    padding: 10vw 5.63vw;
+    gap: calc(var(--gap)/2);
+    height: 100vh;
+    padding: 5.63vw 10vw;
 }
 
 button,
@@ -113,9 +118,15 @@ main,
     gap: var(--gap);
 }
 
+main,
+#form-section {
+    flex-grow: 1;
+}
+
 #ratio-form {
     gap: var(--gap);
-    justify-content: space-around;
+    justify-content: space-between;
+    height: 100%;
 }
 
 #ratio-form article {

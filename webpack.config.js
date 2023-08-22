@@ -24,7 +24,7 @@ module.exports = {
     plugins: [
       new BundleAnalyzerPlugin({
         // "static" generates `report.html`. "disable" stops report generation
-        analyzerMode: "static",
+        analyzerMode: "disable",
       }),
       new WebpackPwaManifest({
         // `manifest.json` object key-values
