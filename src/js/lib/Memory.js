@@ -11,6 +11,10 @@ class Memory {
     }
     return ratios;
   }
+
+  saveRatio(ratio) {
+    return this.memory.push(ratio)
+  }
 }
 
 module.exports = Memory;

@@ -38,7 +38,7 @@ class Display extends Memory {
 
     const ratio = this.numEls.map((numEl) => numEl.value)
     this.saveRatio(ratio)
-    console.log(ratio)
+    console.log(this.memory)
   }
 
   adjustWidth(numEl) {
