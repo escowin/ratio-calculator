@@ -45,6 +45,16 @@ class Display extends Memory {
     const ratio = this.numEls.map((numEl) => numEl.value)
     this.saveRatio(ratio)
   }
+  
+  displayMemory() {
+    const listEl = document.getElementById("ratio-list");
+    this.memory.map(ratio => {
+      const item = document.createElement("li");
+      item.innerText = ratio
+
+      listEl.appendChild(item)
+    })
+  }
 
   adjustWidth(numEl) {
     let num = numEl.value.length;
