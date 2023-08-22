@@ -13,3 +13,5 @@ display.form.addEventListener("submit", (e) => {
 display.numEls.forEach(el => {
   el.addEventListener("input", (el) => display.adjustWidth(el.target))
 })
+
+console.log(display)

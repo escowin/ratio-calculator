@@ -1,9 +1,19 @@
 class Memory {
-    constructor(list) {
-        this.list = list;
+  constructor() {
+    this.memory = this.loadMemory();
+  }
+
+  loadMemory() {
+    let ratios = localStorage.getItem("ratios");
+
+    if (!ratios) {
+      const array = [];
+      localStorage.setItem("ratios", array);
+      return ratios;
     }
 
-    getRatioList() {
-        
-    }
+    return ratios;
+  }
 }
+
+module.exports = Memory;
