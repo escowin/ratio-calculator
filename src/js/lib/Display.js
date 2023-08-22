@@ -32,6 +32,13 @@ class Display {
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
+
+    const numList = this.numEls.map((numEl) => numEl.value)
+    const ratio = {}
+    for (const key of numList) {
+      ratio[key] = key;
+    }
+    console.log(ratio)
   }
 
   adjustWidth(numEl) {

@@ -18,7 +18,7 @@ class Calculator {
       case this.num4 === "":
         return (this.num2 / this.num1) * this.num3;
       default:
-        return console.log("invalid input");
+        return console.error("submitted 4 num values");
     }
   }
 }
