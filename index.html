@@ -29,20 +29,27 @@
       <section id="form-section">
         <form class="flex" id="ratio-form">
           <h2>a : b = c : d</h2>
+          <article id="list-container">
+            <ul id="ratio-list"></ul>
+          </article>
           <article class="flex">
-            <label class="flex" for="num-1"> A
+            <label class="flex" for="num-1">
+              A
               <input type="number" id="num-1" placeholder="A" step="0.01" />
             </label>
             :
-            <label class="flex" for="num-2"> B
+            <label class="flex" for="num-2">
+              B
               <input type="number" id="num-2" placeholder="B" step="0.01" />
             </label>
             =
-            <label class="flex" for="num-3"> C
+            <label class="flex" for="num-3">
+              C
               <input type="number" id="num-3" placeholder="C" step="0.01" />
             </label>
             :
-            <label class="flex" for="num-4"> D
+            <label class="flex" for="num-4">
+              D
               <input type="number" id="num-4" placeholder="D" step="0.01" />
             </label>
           </article>
@@ -51,11 +58,6 @@
       <section class="flex" id="btn-section">
         <button form="ratio-form" type="submit" id="submit">enter</button>
         <button form="ratio-form" type="reset" id="clear">clear</button>
-      </section>
-      <section id="list-section">
-        <ul id="ratio-list">
-
-        </ul>
       </section>
     </main>
     <footer>

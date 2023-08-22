@@ -142,6 +142,17 @@ input {
     flex-grow: 1;
 }
 
+#list-container {
+    flex-grow: 1;
+}
+
+#ratio-list {
+    list-style: none;
+    color: var(--dark);
+    font-size: .85rem;
+    text-align: end;
+}
+
 @media screen and (min-width: 750px) {
     main {
         flex-direction: row;
