@@ -13,7 +13,10 @@ class Memory {
   }
 
   saveRatio(ratio) {
-    this.memory.push(ratio);
+    // for localStorage purposes
+    let ratioString = `${ratio[0]} : ${ratio[1]} = ${ratio[2]} : ${ratio[3]}`
+
+    this.memory.push(ratioString);
     localStorage.setItem("ratios", JSON.stringify(this.memory))
   }
 }

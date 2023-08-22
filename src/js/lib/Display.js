@@ -23,6 +23,12 @@ class Display extends Memory {
     https://github.com/escowin/ratio-calculator
     `);
   }
+
+  displayMemory() {
+    for (let i = 0; i < this.memory.length; i++) {
+      const memoryItem = `<li>${this.memory[i]}</li>`
+    }
+  }
   
   displayAnswer(e) {
     e.preventDefault();
@@ -38,7 +44,6 @@ class Display extends Memory {
 
     const ratio = this.numEls.map((numEl) => numEl.value)
     this.saveRatio(ratio)
-    console.log(this.memory)
   }
 
   adjustWidth(numEl) {
