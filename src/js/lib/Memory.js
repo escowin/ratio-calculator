@@ -4,14 +4,11 @@ class Memory {
   }
 
   loadMemory() {
-    let ratios = localStorage.getItem("ratios");
+    let ratios = localStorage.getItem("ratios")
 
     if (!ratios) {
-      const array = [];
-      localStorage.setItem("ratios", array);
-      return ratios;
+      localStorage.setItem("ratios", []);
     }
-
     return ratios;
   }
 }

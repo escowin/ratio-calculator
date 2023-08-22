@@ -6,6 +6,7 @@ const Display = require("./lib/Display");
 const display = new Display();
 
 display.displayDate();
+display.loadMemory();
 display.clearBtn.addEventListener("click", () => display.resetWidth());
 display.form.addEventListener("submit", (e) => {
   display.displayAnswer(e)

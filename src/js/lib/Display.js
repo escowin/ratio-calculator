@@ -2,8 +2,8 @@ const Calculator = require("./Calculator");
 const Memory = require("./Memory");
 
 class Display extends Memory {
-  constructor(ratios) {
-    super(ratios);
+  constructor(memory) {
+    super(memory);
 
     this.dateEl = document.getElementById("date");
     this.form = document.getElementById("ratio-form");
@@ -37,11 +37,8 @@ class Display extends Memory {
     emptyEl.style.width = `${emptyEl.value.length}rem`;
 
     const ratio = this.numEls.map((numEl) => numEl.value)
+    this.saveRatio(ratio)
     console.log(ratio)
-
-    // for (const key of numList) {
-    //   ratio['num' + key] = key;
-    // }
   }
 
   adjustWidth(numEl) {
