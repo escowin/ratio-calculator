@@ -36,7 +36,7 @@ class Display {
     const numList = this.numEls.map((numEl) => numEl.value)
     const ratio = {}
     for (const key of numList) {
-      ratio[key] = key;
+      ratio['num' + key] = key;
     }
     console.log(ratio)
   }
