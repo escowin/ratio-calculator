@@ -23,7 +23,7 @@ class Display extends Memory {
     https://github.com/escowin/ratio-calculator
     `);
   }
-  
+
   displayAnswer(e) {
     e.preventDefault();
     // extracts, destructures, and assigns values from dom elements to instantiated object
@@ -35,21 +35,20 @@ class Display extends Memory {
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
-    
-    this.saveRatio(this.numEls)
+
+    this.saveRatio(this.numEls);
   }
-  
+
   displayMemory() {
     const listEl = document.getElementById("ratio-list");
+
     this.memory.map((ratio, i) => {
       const item = document.createElement("li");
-      item.innerText = ratio
-      const deleteRatioBtn = document.createElement("button");
-      deleteRatioBtn.setAttribute("data-id", i)
-      
-      item.appendChild(deleteRatioBtn)
-      listEl.appendChild(item)
-    })
+      item.setAttribute("data-id", i);
+      item.innerHTML = `<p>${ratio.num1} : ${ratio.num2} = ${ratio.num3} : ${ratio.num4}</p>
+        <button>x</button>`;
+      listEl.appendChild(item);
+    });
   }
 
   adjustWidth(numEl) {
