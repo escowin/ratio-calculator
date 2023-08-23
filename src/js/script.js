@@ -1,5 +1,6 @@
-import "../css/style.css";
-
+// import "../css/style.css";
+const { development } = require("./development")
+development()
 const Display = require("./lib/Display");
 const display = new Display();
 

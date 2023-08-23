@@ -30,7 +30,7 @@ class Display extends Memory {
 
     this.memory.map((ratio, i) => {
       const item = document.createElement("li");
-      item.innerText = `${ratio.num1} : ${ratio.num2} = ${ratio.num3} : ${ratio.num4}`;
+      item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
       listEl.appendChild(item);
     });
   }
