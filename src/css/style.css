@@ -35,16 +35,23 @@ body {
 }
 
 button {
-    background-color: var(--dark);
     border: none;
-    color: var(--light);
     transition: 1s;
 }
 
-button:active,
-button:hover {
+#btn-section button {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+#btn-section button:active,
+#btn-section button:hover {
     background-color: var(--clicked);
     color: var(--dark);
+}
+
+#ratio-list button {
+    background-color: transparent;
 }
 
 footer {
@@ -68,7 +75,7 @@ label {
 
 /* text */
 body,
-button,
+#btn-section button,
 h1 {
     font-size: 1.5rem;
 }
@@ -102,7 +109,7 @@ body {
     padding: 5.63vw 10vw;
 }
 
-button,
+#btn-section button,
 #ratio-form {
     border-radius: .5rem;
     padding: .5rem 1rem;
@@ -147,10 +154,18 @@ input {
 }
 
 #ratio-list {
-    list-style: none;
-    color: var(--dark);
+    flex-direction: column;
     font-size: .85rem;
+    gap: calc(var(--gap)/2);
+    list-style: none;
     text-align: end;
+}
+
+#ratio-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: var(--gap);
 }
 
 @media screen and (min-width: 750px) {
