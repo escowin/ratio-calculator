@@ -8,9 +8,8 @@ display.displayMemory();
 display.displayDate();
 
 display.clearBtn.addEventListener("click", () => display.resetWidth());
-display.form.addEventListener("submit", (e) => {
-  display.displayAnswer(e)
+display.clearAllBtn.addEventListener("click", () => display.clearMemory());
+display.form.addEventListener("submit", (e) => display.displayAnswer(e));
+display.numEls.forEach((el) => {
+  el.addEventListener("input", (el) => display.adjustWidth(el.target));
 });
-display.numEls.forEach(el => {
-  el.addEventListener("input", (el) => display.adjustWidth(el.target))
-})

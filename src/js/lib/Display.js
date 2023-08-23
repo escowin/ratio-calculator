@@ -7,7 +7,9 @@ class Display extends Memory {
 
     this.dateEl = document.getElementById("date");
     this.form = document.getElementById("ratio-form");
+    this.listEl = document.getElementById("ratio-list");
     this.clearBtn = document.getElementById("clear");
+    this.clearAllBtn = document.getElementById("clear-all")
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));

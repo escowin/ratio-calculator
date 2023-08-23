@@ -3,6 +3,18 @@ class Memory {
     this.memory = this.loadMemory();
   }
 
+  clearMemory() {
+    let memory = localStorage.getItem("ratios");
+    if (memory) {
+      console.log(this.memory) // [{...}, {...}]
+      localStorage.setItem("ratios", JSON.stringify([]));
+      this.memory = this.loadMemory();
+      console.log(memory) // [{...}, {...}]
+      console.log(localStorage.getItem("ratios")) // []
+      console.log(this.memory) // []
+    }
+  }
+
   loadMemory() {
     let ratios = localStorage.getItem("ratios");
 
