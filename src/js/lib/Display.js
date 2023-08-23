@@ -43,7 +43,8 @@ class Display extends Memory {
   }
 
   displayMemory() {
-    const listEl = document.getElementById("ratio-list");
+    console.log(this.memory)
+    const listEl = this.listEl;
     // resets to prevent duplicate display
     listEl.innerHTML = '';
 
@@ -54,6 +55,11 @@ class Display extends Memory {
         <button>x</button>`;
       listEl.appendChild(item);
     });
+  }
+
+  resetMemoryDisplay() {
+    this.clearMemory()
+    this.displayMemory()
   }
 
   adjustWidth(numEl) {

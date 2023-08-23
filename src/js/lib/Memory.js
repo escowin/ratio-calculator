@@ -6,12 +6,9 @@ class Memory {
   clearMemory() {
     let memory = localStorage.getItem("ratios");
     if (memory) {
-      console.log(this.memory) // [{...}, {...}]
       localStorage.setItem("ratios", JSON.stringify([]));
-      this.memory = this.loadMemory();
-      console.log(memory) // [{...}, {...}]
-      console.log(localStorage.getItem("ratios")) // []
-      console.log(this.memory) // []
+      // reset concludes with constructor calling for the now empty `ratios` array in localStorage
+      return this.memory = this.loadMemory();
     }
   }
 
