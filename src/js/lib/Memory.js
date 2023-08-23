@@ -1,6 +1,7 @@
 class Memory {
   constructor() {
     this.memory = this.loadMemory();
+    this.year = new Date().getFullYear();
   }
 
   clearMemory() {

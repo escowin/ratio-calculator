@@ -2,31 +2,46 @@ const Calculator = require("./Calculator");
 const Memory = require("./Memory");
 
 class Display extends Memory {
-  constructor(memory) {
-    super(memory);
-
+  constructor(memory, year) {
+    super(memory, year);
     this.dateEl = document.getElementById("date");
     this.form = document.getElementById("ratio-form");
     this.listEl = document.getElementById("ratio-list");
     this.clearBtn = document.getElementById("clear");
-    this.clearAllBtn = document.getElementById("clear-all")
+    this.clearAllBtn = document.getElementById("clear-all");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
     }
   }
 
-  // methods | domFunction() {...}
+  // methods
+  // dom | memory-related
   displayDate() {
-    const year = new Date().getFullYear();
-    this.dateEl.innerText = year;
-    console.log(`
-    \u00A9 ${year} Edwin M. Escobar
-    https://github.com/escowin/ratio-calculator
-    `);
+    this.dateEl.innerText = this.year;
+    console.log(`    \u00A9 ${this.year} Edwin M. Escobar
+    https://github.com/escowin/ratio-calculator`);
   }
 
-  displayAnswer(e) {
+  displayMemory() {
+    const listEl = this.listEl;
+    // resets to prevent duplicate display
+    listEl.innerHTML = "";
+
+    this.memory.map((ratio, i) => {
+      const item = document.createElement("li");
+      item.innerText = `${ratio.num1} : ${ratio.num2} = ${ratio.num3} : ${ratio.num4}`;
+      listEl.appendChild(item);
+    });
+  }
+
+  resetMemoryDisplay() {
+    this.clearMemory();
+    this.displayMemory();
+  }
+
+  // dom | input-related
+  displayNum(e) {
     e.preventDefault();
     // extracts, destructures, and assigns values from dom elements to instantiated object
     const nums = this.numEls.map((numEl) => numEl.value);
@@ -40,26 +55,6 @@ class Display extends Memory {
 
     this.saveRatio(this.numEls);
     this.displayMemory();
-  }
-
-  displayMemory() {
-    console.log(this.memory)
-    const listEl = this.listEl;
-    // resets to prevent duplicate display
-    listEl.innerHTML = '';
-
-    this.memory.map((ratio, i) => {
-      const item = document.createElement("li");
-      item.setAttribute("data-id", i);
-      item.innerHTML = `<p>${ratio.num1} : ${ratio.num2} = ${ratio.num3} : ${ratio.num4}</p>
-        <button>x</button>`;
-      listEl.appendChild(item);
-    });
-  }
-
-  resetMemoryDisplay() {
-    this.clearMemory()
-    this.displayMemory()
   }
 
   adjustWidth(numEl) {

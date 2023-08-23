@@ -6,7 +6,7 @@ class Calculator {
     this.num4 = num4;
   }
 
-  // A : B = C : D
+  // math | a:b = c:d
   calculateNum() {
     switch (true) {
       case this.num1 === "":
