@@ -37,10 +37,13 @@ class Display extends Memory {
     emptyEl.style.width = `${emptyEl.value.length}rem`;
 
     this.saveRatio(this.numEls);
+    this.displayMemory();
   }
 
   displayMemory() {
     const listEl = document.getElementById("ratio-list");
+    // resets to prevent duplicate display
+    listEl.innerHTML = '';
 
     this.memory.map((ratio, i) => {
       const item = document.createElement("li");
