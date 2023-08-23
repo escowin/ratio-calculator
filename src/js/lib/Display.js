@@ -35,9 +35,8 @@ class Display extends Memory {
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
-
-    const ratio = this.numEls.map((numEl) => numEl.value)
-    this.saveRatio(ratio)
+    
+    this.saveRatio(this.numEls)
   }
   
   displayMemory() {

@@ -4,7 +4,7 @@ class Memory {
   }
 
   loadMemory() {
-    let ratios = localStorage.getItem("ratios")
+    let ratios = localStorage.getItem("ratios");
 
     if (!ratios) {
       localStorage.setItem("ratios", JSON.stringify([]));
@@ -12,12 +12,18 @@ class Memory {
     return JSON.parse(ratios);
   }
 
-  saveRatio(ratio) {
-    // for localStorage purposes
-    let ratioString = `${ratio[0]} : ${ratio[1]} = ${ratio[2]} : ${ratio[3]}`
+  saveRatio(numEls) {
+    const nums = numEls.map((numEl) => numEl.value);
+    const ratio = {};
+    let i = 1;
+    for (const key of nums) {
+      ratio["num" + i] = key;
+      i++;
+    }
 
-    this.memory.push(ratioString);
-    localStorage.setItem("ratios", JSON.stringify(this.memory))
+    // pushes object to localStorage array
+    this.memory.push(ratio);
+    localStorage.setItem("ratios", JSON.stringify(this.memory));
   }
 }
 
