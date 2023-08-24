@@ -1,3 +1,5 @@
+const mockRatios = require("../lib/__mocks__/Memory");
+
 class Memory {
   constructor() {
     this.memory = this.loadMemory();
@@ -38,25 +40,39 @@ class Memory {
 
   async initDB() {
     let db;
-    const request = window.indexedDB.open("ratioCalculator", 1);
+    // requests database from indexeddb using the name and version. possible event outcomes:
+    // - triggers .onsuccess()
+    // - creates the database through .open() operation. an .onupgradeneeded event is then triggered
+    const request = window.indexedDB.open("ratio_calculator", 1);
 
     request.onerror = (e) => console.error(e.target.errorCode);
-    // request.onsuccess = (e) => (db = e.target.result);
+
+    // creates the databaase
     request.onupgradeneeded = (e) => {
+      // database interface
       db = e.target.result;
+
+      // table analog | object holds js objecs
       const store = db.createObjectStore("ratios", { autoIncrement: true });
       // for (let i = 1; i < 5; i++) {
       //   store.createIndex(`num${i}`, `num${i}`, { unique: false });
       // }
-      console.log(db);
-      console.log(store);
 
+      console.log(mockRatios)
       store.transaction.oncomplete = (e) => {
         const ratioStore = db
           .transaction("ratios", "readwrite")
           .objectStore("ratios");
-        console.log(ratioStore);
+        mockRatios.forEach(ratio => ratioStore.add(ratio))
       };
+      // successful exit triggers .onsuccess() request
+      // unsuccesful throws error
+    };
+
+    // returns the database
+    request.onsuccess = (e) => {
+      db = e.target.result;
+      console.log(db);
     };
   }
 }
