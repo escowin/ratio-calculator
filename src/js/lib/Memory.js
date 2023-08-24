@@ -9,7 +9,7 @@ class Memory {
     if (memory) {
       localStorage.setItem("ratios", JSON.stringify([]));
       // reset concludes with constructor calling for the now empty `ratios` array in localStorage
-      return this.memory = this.loadMemory();
+      return (this.memory = this.loadMemory());
     }
   }
 
@@ -34,6 +34,17 @@ class Memory {
     // pushes object to localStorage array
     this.memory.push(ratio);
     localStorage.setItem("ratios", JSON.stringify(this.memory));
+  }
+
+  async initDB() {
+    let db;
+    const request = window.indexedDB.open("ratioCalculator", 1);
+
+    request.onerror = (e) => console.error("error " + e);
+    request.onsuccess = (e) => {
+      db = e.target.result;
+      console.log(db)
+    };
   }
 }
 
