@@ -27,12 +27,12 @@ class Display extends Memory {
     const listEl = this.listEl;
     // resets to prevent duplicate display
     listEl.innerHTML = "";
-
-    this.memory.map((ratio, i) => {
-      const item = document.createElement("li");
-      item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
-      listEl.appendChild(item);
-    });
+    console.log(this.memory)
+    // this.memory.map((ratio, i) => {
+    //   const item = document.createElement("li");
+    //   item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
+    //   listEl.appendChild(item);
+    // });
   }
 
   resetMemoryDisplay() {

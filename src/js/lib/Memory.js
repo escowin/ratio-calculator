@@ -16,14 +16,14 @@ class Memory {
     }
   }
 
-  loadMemory() {
-    let ratios = localStorage.getItem("ratios");
+  // loadMemory() {
+  //   let ratios = localStorage.getItem("ratios");
 
-    if (!ratios) {
-      localStorage.setItem("ratios", JSON.stringify([]));
-    }
-    return JSON.parse(ratios);
-  }
+  //   if (!ratios) {
+  //     localStorage.setItem("ratios", JSON.stringify([]));
+  //   }
+  //   return JSON.parse(ratios);
+  // }
 
   saveRatio(numEls) {
     const nums = numEls.map((numEl) => numEl.value);
@@ -49,7 +49,7 @@ class Memory {
     };
   }
 
-  async initDB() {
+  async loadMemory() {
     let db;
     // requests database from indexeddb using the name and version. possible event outcomes:
     // - triggers .onsuccess()
@@ -58,7 +58,7 @@ class Memory {
 
     request.onerror = (e) => console.error(e.target.errorCode);
 
-    // creates the databaase
+    // creates new databaase
     request.onupgradeneeded = (e) => {
       // database interface
       db = e.target.result;
@@ -74,14 +74,24 @@ class Memory {
           .transaction("ratios", "readwrite")
           .objectStore("ratios");
         mockRatios.forEach((ratio) => ratioStore.add(ratio));
+        console.log(ratioStore);
       };
-      // successful exit triggers .onsuccess() request
-      // unsuccesful throws error
     };
 
-    // returns the database
+    // returns existing database
     request.onsuccess = (e) => {
+      const memory = []
       db = e.target.result;
+      db.transaction("ratios").objectStore("ratios").openCursor().onsuccess = (e) => {
+        const ratioObject = e.target.result
+        if (!ratioObject) {
+          return memory
+        }
+        memory.push(ratioObject.value);
+        ratioObject.continue()
+      }
+      console.log(memory)
+      return memory
     };
   }
 }

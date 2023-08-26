@@ -2,7 +2,7 @@ import "../css/style.css";
 const Display = require("./lib/Display");
 const display = new Display();
 
-display.initDB()
+// display.initDB()
 display.loadMemory();
 display.displayMemory();
 display.displayDate();
