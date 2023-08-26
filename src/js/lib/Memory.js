@@ -4,7 +4,6 @@ class Memory {
   constructor() {
     this.memory = this.loadMemory();
     this.year = new Date().getFullYear();
-    // this.database
   }
 
   clearMemory() {
@@ -24,6 +23,54 @@ class Memory {
   //   }
   //   return JSON.parse(ratios);
   // }
+
+  loadMemory() {
+    let db;
+    return new Promise((resolve, reject) => {
+      // requests database from indexeddb using the name and version. possible event outcomes:
+      // - triggers .onsuccess()
+      // - creates the database through .open() operation. an .onupgradeneeded event is then triggered
+      const request = window.indexedDB.open("ratio_calculator", 1);
+      request.onerror = (e) => console.error(e.target.errorCode);
+
+      request.onupgradeneeded = (e) => {
+        // database interface
+        db = e.target.result;
+
+        // table analog | object holds js objecs
+        const store = db.createObjectStore("ratios", { autoIncrement: true });
+        for (let i = 1; i < 5; i++) {
+          store.createIndex(`num${i}`, `num${i}`, { unique: false });
+        }
+
+        // store.transaction.oncomplete = (e) => {
+        //   const ratioStore = db
+        //     .transaction("ratios", "readwrite")
+        //     .objectStore("ratios");
+        //   mockRatios.forEach((ratio) => ratioStore.add(ratio));
+        //   console.log(ratioStore);
+        // };
+      };
+
+      request.onsuccess = (e) => {
+        const memory = [];
+        db = e.target.result;
+        const cursorRequest = db
+          .transaction("ratios")
+          .objectStore("ratios")
+          .openCursor();
+        cursorRequest.onsuccess = (e) => {
+          const cursor = e.target.result;
+          if (cursor) {
+            memory.push(cursor.value);
+            cursor.continue();
+          } else {
+            resolve(memory);
+          }
+        };
+      };
+    });
+  }
 
   saveRatio(numEls) {
     const nums = numEls.map((numEl) => numEl.value);
@@ -46,52 +93,6 @@ class Memory {
       const store = transaction.objectStore("ratios");
       store.add(ratio).onsuccess = (e) =>
         console.log("store request success " + e);
-    };
-  }
-
-  async loadMemory() {
-    let db;
-    // requests database from indexeddb using the name and version. possible event outcomes:
-    // - triggers .onsuccess()
-    // - creates the database through .open() operation. an .onupgradeneeded event is then triggered
-    const request = window.indexedDB.open("ratio_calculator", 1);
-
-    request.onerror = (e) => console.error(e.target.errorCode);
-
-    // creates new databaase
-    request.onupgradeneeded = (e) => {
-      // database interface
-      db = e.target.result;
-
-      // table analog | object holds js objecs
-      const store = db.createObjectStore("ratios", { autoIncrement: true });
-      for (let i = 1; i < 5; i++) {
-        store.createIndex(`num${i}`, `num${i}`, { unique: false });
-      }
-
-      store.transaction.oncomplete = (e) => {
-        const ratioStore = db
-          .transaction("ratios", "readwrite")
-          .objectStore("ratios");
-        mockRatios.forEach((ratio) => ratioStore.add(ratio));
-        console.log(ratioStore);
-      };
-    };
-
-    // returns existing database
-    request.onsuccess = (e) => {
-      const memory = []
-      db = e.target.result;
-      db.transaction("ratios").objectStore("ratios").openCursor().onsuccess = (e) => {
-        const ratioObject = e.target.result
-        if (!ratioObject) {
-          return memory
-        }
-        memory.push(ratioObject.value);
-        ratioObject.continue()
-      }
-      console.log(memory)
-      return memory
     };
   }
 }

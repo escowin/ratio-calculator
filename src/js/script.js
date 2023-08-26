@@ -6,6 +6,7 @@ const display = new Display();
 display.loadMemory();
 display.displayMemory();
 display.displayDate();
+console.log(display)
 
 display.clearBtn.addEventListener("click", () => display.resetWidth());
 display.clearAllBtn.addEventListener("click", () => display.resetMemoryDisplay());
