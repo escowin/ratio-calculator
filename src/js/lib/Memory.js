@@ -15,24 +15,11 @@ class Memory {
     }
   }
 
-  // loadMemory() {
-  //   let ratios = localStorage.getItem("ratios");
-
-  //   if (!ratios) {
-  //     localStorage.setItem("ratios", JSON.stringify([]));
-  //   }
-  //   return JSON.parse(ratios);
-  // }
-
   loadMemory() {
     let db;
     return new Promise((resolve, reject) => {
-      // requests database from indexeddb using the name and version. possible event outcomes:
-      // - triggers .onsuccess()
-      // - creates the database through .open() operation. an .onupgradeneeded event is then triggered
       const request = window.indexedDB.open("ratio_calculator", 1);
-      request.onerror = (e) => console.error(e.target.errorCode);
-
+      request.onerror = (e) => reject(e.target.errorCode);
       request.onupgradeneeded = (e) => {
         // database interface
         db = e.target.result;
@@ -42,16 +29,7 @@ class Memory {
         for (let i = 1; i < 5; i++) {
           store.createIndex(`num${i}`, `num${i}`, { unique: false });
         }
-
-        // store.transaction.oncomplete = (e) => {
-        //   const ratioStore = db
-        //     .transaction("ratios", "readwrite")
-        //     .objectStore("ratios");
-        //   mockRatios.forEach((ratio) => ratioStore.add(ratio));
-        //   console.log(ratioStore);
-        // };
       };
-
       request.onsuccess = (e) => {
         const memory = [];
         db = e.target.result;
@@ -61,40 +39,46 @@ class Memory {
           .openCursor();
         cursorRequest.onsuccess = (e) => {
           const cursor = e.target.result;
-          if (cursor) {
-            memory.push(cursor.value);
-            cursor.continue();
-          } else {
-            resolve(memory);
-          }
+          cursor
+            ? (memory.push(cursor.value), cursor.continue())
+            : resolve(memory);
         };
       };
     });
   }
 
   saveRatio(numEls) {
-    const nums = numEls.map((numEl) => numEl.value);
-    const ratio = {};
-    let i = 1;
-    for (const key of nums) {
-      ratio["num" + i] = key;
-      i++;
-    }
+    return new Promise((resolve, reject) => {
+      const nums = numEls.map((numEl) => numEl.value);
+      const ratio = {};
+      let i = 1;
+      for (const key of nums) {
+        ratio["num" + i] = key;
+        i++;
+      }
+      const request = window.indexedDB.open("ratio_calculator", 1);
+      request.onerror = (e) => console.error(e.target.errorCode);
+      request.onsuccess = (e) => {
+        let db = e.target.result;
+        const transaction = db.transaction(["ratios"], "readwrite");
+        transaction.onerror = (e) => console.error(e);
+        transaction.oncomplete = (e) => {
+          console.log(this.memory);
+          this.memory = this.loadMemory();
+          return this.memory;
+        };
 
-    // indexeddb
-    const request = window.indexedDB.open("ratio_calculator", 1);
-    request.onerror = (e) => console.error(e.target.errorCode);
-    request.onsuccess = (e) => {
-      let db = e.target.result;
-      const transaction = db.transaction(["ratios"], "readwrite");
-      transaction.oncomplete = (e) => console.log(e);
-      transaction.onerror = (e) => console.error(e);
-
-      const store = transaction.objectStore("ratios");
-      store.add(ratio).onsuccess = (e) =>
-        console.log("store request success " + e);
-    };
+        const store = transaction.objectStore("ratios");
+        store.add(ratio).onsuccess = (e) => resolve(this.loadMemory());
+      };
+    });
   }
+
+  // updateMemory() {
+  //   this.memory = this.loadMemory()
+  //   console.log(this.memory)
+  //   return this.memory
+  // }
 }
 
 module.exports = Memory;
