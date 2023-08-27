@@ -26,18 +26,17 @@ class Display extends Memory {
   async displayMemory() {
     const listEl = this.listEl;
     listEl.innerHTML = "";
-    try {
-      const memory = await this.loadMemory();
-      console.log(this.database)
+    console.log(this.memory)
+    this.memory.then(memory => {
       console.log(memory)
-      memory.forEach((ratio) => {
-        const item = document.createElement("li");
-        item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
-        listEl.appendChild(item);
-      });
-    } catch (err) {
-      console.error(err);
-    }
+    })
+
+    // this.memory.map((ratio, i) => {
+    //   console.log(ratio)
+    //   // const item = document.createElement("li");
+    //   // item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
+    //   // listEl.appendChild(item);
+    // });
   }
 
   resetMemoryDisplay() {
