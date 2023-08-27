@@ -6,15 +6,6 @@ class Memory {
     this.year = new Date().getFullYear();
   }
 
-  clearMemory() {
-    let memory = localStorage.getItem("ratios");
-    if (memory) {
-      localStorage.setItem("ratios", JSON.stringify([]));
-      // reset concludes with constructor calling for the now empty `ratios` array in localStorage
-      return (this.memory = this.loadMemory());
-    }
-  }
-
   loadMemory() {
     let db;
     return new Promise((resolve, reject) => {
@@ -61,7 +52,7 @@ class Memory {
       request.onsuccess = (e) => {
         let db = e.target.result;
         const transaction = db.transaction(["ratios"], "readwrite");
-        transaction.onerror = (e) => console.error(e);
+        transaction.onerror = (e) => reject(e);
         transaction.oncomplete = (e) => {
           this.memory = this.loadMemory();
           return this.memory;
@@ -71,6 +62,26 @@ class Memory {
         store.add(ratio).onsuccess = (e) => resolve(this.loadMemory());
       };
     });
+  }
+
+  clearMemory() {
+    return new Promise((resolve, reject) => {
+      const request = window.indexedDB.open("ratio_calculator", 1);
+      request.onerror = (e) => console.error(e)
+      request.onsuccess = e => {
+        const db = e.target.result;
+        const tx = db.transaction("ratios", "readwrite");
+        const store = tx.objectStore("ratios");
+        const clearRequest = store.clear();
+
+        clearRequest.onerror = (e) => reject(e);
+        clearRequest.onsuccess = () => {
+          this.memory = this.loadMemory();
+          console.log(this.memory)
+          return resolve(this.memory)
+        };
+      }
+    })
   }
 }
 

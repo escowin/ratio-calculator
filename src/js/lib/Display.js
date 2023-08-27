@@ -25,9 +25,7 @@ class Display extends Memory {
 
   displayMemory() {
     const listEl = this.listEl;
-    // resets to prevent duplicate display
     listEl.innerHTML = "";
-    console.log(this.memory);
     this.memory.then((memory) => {
       memory.map((ratio, i) => {
         const item = document.createElement("li");
@@ -37,9 +35,13 @@ class Display extends Memory {
     });
   }
 
-  resetMemoryDisplay() {
-    this.clearMemory();
-    this.displayMemory();
+  async resetMemoryDisplay() {
+    try {
+      await this.clearMemory();
+      this.displayMemory();      
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   // dom | input-related
