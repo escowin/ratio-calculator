@@ -26,9 +26,9 @@ class Display extends Memory {
   async displayMemory() {
     const listEl = this.listEl;
     listEl.innerHTML = "";
-
     try {
       const memory = await this.loadMemory();
+      console.log(this.database)
       console.log(memory)
       memory.forEach((ratio) => {
         const item = document.createElement("li");

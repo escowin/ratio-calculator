@@ -2,6 +2,7 @@ class Memory {
   constructor() {
     this.database = null;
     this.year = new Date().getFullYear();
+    this.openDatabase();
   }
 
   openDatabase() {
