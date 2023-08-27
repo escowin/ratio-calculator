@@ -2,8 +2,8 @@ const Calculator = require("./Calculator");
 const Memory = require("./Memory");
 
 class Display extends Memory {
-  constructor(memory, year) {
-    super(memory, year);
+  constructor() {
+    super();
     this.dateEl = document.getElementById("date");
     this.form = document.getElementById("ratio-form");
     this.listEl = document.getElementById("ratio-list");
@@ -23,19 +23,21 @@ class Display extends Memory {
     https://github.com/escowin/ratio-calculator`);
   }
 
-  displayMemory() {
+  async displayMemory() {
     const listEl = this.listEl;
-    // resets to prevent duplicate display
     listEl.innerHTML = "";
-    console.log(this.memory);
-    this.memory.then((memory) => {
-      memory.map((ratio, i) => {
-        console.log(ratio);
+
+    try {
+      const memory = await this.loadMemory();
+      console.log(memory)
+      memory.forEach((ratio) => {
         const item = document.createElement("li");
         item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
         listEl.appendChild(item);
       });
-    });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   resetMemoryDisplay() {
@@ -44,7 +46,7 @@ class Display extends Memory {
   }
 
   // dom | input-related
-  displayNum(e) {
+  async displayNum(e) {
     e.preventDefault();
     // extracts, destructures, and assigns values from dom elements to instantiated object
     const nums = this.numEls.map((numEl) => numEl.value);
@@ -56,8 +58,12 @@ class Display extends Memory {
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
 
-    this.saveRatio(this.numEls);
-    this.displayMemory();
+    try {
+      await this.saveRatio(this.numEls);
+      // this.displayMemory();
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   adjustWidth(numEl) {

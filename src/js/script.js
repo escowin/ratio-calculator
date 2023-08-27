@@ -3,7 +3,7 @@ const Display = require("./lib/Display");
 const display = new Display();
 
 // display.initDB()
-display.loadMemory();
+// display.loadMemory();
 display.displayMemory();
 display.displayDate();
 console.log(display)
