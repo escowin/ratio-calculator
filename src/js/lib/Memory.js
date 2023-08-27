@@ -1,5 +1,3 @@
-const mockRatios = require("../lib/__mocks__/Memory");
-
 class Memory {
   constructor() {
     this.memory = this.loadMemory();
@@ -50,15 +48,15 @@ class Memory {
       const request = window.indexedDB.open("ratio_calculator", 1);
       request.onerror = (e) => console.error(e.target.errorCode);
       request.onsuccess = (e) => {
-        let db = e.target.result;
-        const transaction = db.transaction(["ratios"], "readwrite");
-        transaction.onerror = (e) => reject(e);
-        transaction.oncomplete = (e) => {
+        const db = e.target.result;
+        const tx = db.transaction(["ratios"], "readwrite");
+        tx.onerror = (e) => reject(e);
+        tx.oncomplete = (e) => {
           this.memory = this.loadMemory();
           return this.memory;
         };
 
-        const store = transaction.objectStore("ratios");
+        const store = tx.objectStore("ratios");
         store.add(ratio).onsuccess = (e) => resolve(this.loadMemory());
       };
     });
@@ -77,7 +75,6 @@ class Memory {
         clearRequest.onerror = (e) => reject(e);
         clearRequest.onsuccess = () => {
           this.memory = this.loadMemory();
-          console.log(this.memory)
           return resolve(this.memory)
         };
       }
