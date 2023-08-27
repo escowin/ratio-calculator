@@ -63,7 +63,6 @@ class Memory {
         const transaction = db.transaction(["ratios"], "readwrite");
         transaction.onerror = (e) => console.error(e);
         transaction.oncomplete = (e) => {
-          console.log(this.memory);
           this.memory = this.loadMemory();
           return this.memory;
         };

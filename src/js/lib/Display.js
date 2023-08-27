@@ -56,10 +56,8 @@ class Display extends Memory {
     emptyEl.style.width = `${emptyEl.value.length}rem`;
 
     try {
-      const promise = await this.saveRatio(this.numEls);
-      this.memory = promise
-      this.memory = this.loadMemory()
-      this.displayMemory()
+      await this.saveRatio(this.numEls);
+      this.displayMemory();
     } catch (err) {
       console.error(err);
     }
