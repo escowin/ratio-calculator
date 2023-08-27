@@ -73,12 +73,6 @@ class Memory {
       };
     });
   }
-
-  // updateMemory() {
-  //   this.memory = this.loadMemory()
-  //   console.log(this.memory)
-  //   return this.memory
-  // }
 }
 
 module.exports = Memory;

@@ -30,7 +30,6 @@ class Display extends Memory {
     console.log(this.memory);
     this.memory.then((memory) => {
       memory.map((ratio, i) => {
-        // console.log(ratio);
         const item = document.createElement("li");
         item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
         listEl.appendChild(item);
@@ -58,7 +57,9 @@ class Display extends Memory {
 
     try {
       const promise = await this.saveRatio(this.numEls);
-      console.log(promise)
+      this.memory = promise
+      this.memory = this.loadMemory()
+      this.displayMemory()
     } catch (err) {
       console.error(err);
     }
