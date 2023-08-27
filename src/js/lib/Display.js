@@ -23,20 +23,19 @@ class Display extends Memory {
     https://github.com/escowin/ratio-calculator`);
   }
 
-  async displayMemory() {
+  displayMemory() {
     const listEl = this.listEl;
+    // resets to prevent duplicate display
     listEl.innerHTML = "";
-    console.log(this.memory)
-    this.memory.then(memory => {
-      console.log(memory)
-    })
-
-    // this.memory.map((ratio, i) => {
-    //   console.log(ratio)
-    //   // const item = document.createElement("li");
-    //   // item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
-    //   // listEl.appendChild(item);
-    // });
+    console.log(this.memory);
+    this.memory.then((memory) => {
+      memory.map((ratio, i) => {
+        console.log(ratio);
+        const item = document.createElement("li");
+        item.innerText = `${ratio.num1}:${ratio.num2} = ${ratio.num3}:${ratio.num4}`;
+        listEl.appendChild(item);
+      });
+    });
   }
 
   resetMemoryDisplay() {
