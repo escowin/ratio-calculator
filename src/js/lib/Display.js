@@ -56,6 +56,7 @@ class Display extends Memory {
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
+    emptyEl.style.color = "var(--accent)"
 
     try {
       await this.saveRatio(this.numEls);
@@ -70,8 +71,11 @@ class Display extends Memory {
     numEl.style.width = `${num}rem`;
   }
 
-  resetWidth() {
-    this.numEls.forEach((el) => (el.style.width = "1rem"));
+  resetInput() {
+    this.numEls.forEach((el) => {
+      el.style.width = "1rem"
+      el.style.color = "var(--dark)"
+    });
   }
 }
 

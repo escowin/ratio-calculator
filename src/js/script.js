@@ -5,7 +5,7 @@ const display = new Display();
 display.displayMemory();
 display.displayDate();
 
-display.clearBtn.addEventListener("click", () => display.resetWidth());
+display.clearBtn.addEventListener("click", () => display.resetInput());
 display.clearAllBtn.addEventListener("click", () => display.resetMemoryDisplay());
 display.form.addEventListener("submit", (e) => display.displayNum(e));
 display.numEls.forEach((el) => {

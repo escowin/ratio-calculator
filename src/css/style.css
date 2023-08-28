@@ -2,7 +2,7 @@
     --dark: rgb(38, 49, 60);
     --light: rgb(189, 206, 215);
     --overlay: rgba(134, 144, 147, 0.5);
-    --clicked: rgb(69, 188, 180);
+    --accent: rgb(52 157 150);
     --k: 1rem;
 }
 
@@ -37,7 +37,7 @@ a {
 }
 
 a:hover {
-    color: var(--clicked);
+    color: var(--accent);
 }
 
 body {
@@ -54,7 +54,7 @@ button {
 
 button:active,
 button:hover {
-    background-color: var(--clicked);
+    background-color: var(--accent);
     color: var(--dark);
 }
 
@@ -63,6 +63,7 @@ footer {
 }
 
 input {
+    color: var(--dark);
     background-color: transparent;
     border: none;
     outline: none;
