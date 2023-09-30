@@ -37,7 +37,7 @@ Run the following command to install necessary dependencies:
 $ npm i
 ```
 
-### Browser via [live URL](https://escowin.github.io/ratio/calculator)
+### Browser via [live URL](https://escowin.github.io/ratio-calculator)
 - Desktop : click install icon in address bar.
 - iOS: click 'Add to Home Screen'.
 
