@@ -15,11 +15,13 @@ class Display extends Memory {
     }
 
     this.numBtns = [];
-    const numBtnsElements = document.querySelectorAll("#number-btns button[data-num]");
-    numBtnsElements.forEach(btn => {
+    const numBtnsElements = document.querySelectorAll(
+      "#number-btns button[data-num]"
+    );
+    numBtnsElements.forEach((btn) => {
       const numValue = btn.getAttribute("data-num");
-      this.numBtns.push({element: btn, value: numValue})
-    })
+      this.numBtns.push({ element: btn, value: numValue });
+    });
   }
 
   // methods
@@ -45,9 +47,9 @@ class Display extends Memory {
   async resetMemoryDisplay() {
     try {
       await this.clearMemory();
-      this.displayMemory();      
+      this.displayMemory();
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   }
 
@@ -63,7 +65,7 @@ class Display extends Memory {
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
-    emptyEl.style.color = "var(--accent)"
+    emptyEl.style.color = "var(--accent)";
 
     try {
       await this.saveRatio(this.numEls);
@@ -80,16 +82,25 @@ class Display extends Memory {
 
   resetInput() {
     this.numEls.forEach((el) => {
-      el.style.width = "1rem"
-      el.style.color = "var(--dark)"
+      el.style.width = "5rem";
+      el.style.color = "var(--dark)";
     });
   }
 
   handleNumPad(num) {
-    console.log("clicked: " + num)
-    console.log(this.numEls)
-    // hardcoded test. dynamic version will use a boolean data value to target specific input el & allow for multi digit numbers
-    this.numEls[0].value = num
+    console.log("clicked: " + num);
+    console.log(this.numEls);
+
+    // Find the input element with data-focus="true"
+    const focusedInput = this.numEls.find(
+      (input) => input.dataset.focus === "true"
+    );
+    console.log(focusedInput);
+
+    // Allows multiple digits and only one decimal point in input element
+    num === "." && focusedInput.value.includes(".")
+      ? console.log("decimal point already exists in input value")
+      : (focusedInput.value += num);
   }
 }
 

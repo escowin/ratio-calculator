@@ -96,6 +96,8 @@ input {
 
 input {
     text-align: center;
+    width: 5rem;
+
 }
 
 /* display */
@@ -128,10 +130,6 @@ main {
     width: 100%;
 }
 
-input {
-    width: var(--k);
-}
-
 main,
 #btn-section {
     gap: var(--k);
@@ -142,7 +140,6 @@ main,
     flex-grow: 1;
     overflow: hidden;
 }
-
 
 #ratio-form {
     border-radius: .5rem;
