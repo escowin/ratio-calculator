@@ -1,4 +1,4 @@
-// import "../css/style.css";
+import "../css/style.css";
 const Display = require("./lib/Display");
 const display = new Display();
 
@@ -11,3 +11,8 @@ display.form.addEventListener("submit", (e) => display.displayNum(e));
 display.numEls.forEach((el) => {
   el.addEventListener("input", (el) => display.adjustWidth(el.target));
 });
+
+
+display.numBtns.forEach(el => {
+  el.element.addEventListener("click", () => display.handleNumPad(el.value));
+})

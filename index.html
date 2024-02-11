@@ -7,7 +7,7 @@
     <meta name="description" content="lightweight PWA ratio calculator" />
     <title>Ratio calculator</title>
     <link rel="manifest" href="./dist/manifest.json" />
-    <link rel="stylesheet" href="./src/css/style.css" />
+    <!-- <link rel="stylesheet" href="./src/css/style.css" /> -->
     <script defer src="./dist/app.bundle.js"></script>
     <script defer>
       (function () {
@@ -38,22 +38,22 @@
           <article class="flex">
             <label class="flex" for="num-1">
               A
-              <input type="number" id="num-1" placeholder="A" step="0.01" />
+              <input type="text" id="num-1" placeholder="A" readonly />
             </label>
             :
             <label class="flex" for="num-2">
               B
-              <input type="number" id="num-2" placeholder="B" step="0.01" />
+              <input type="text" id="num-2" placeholder="B" readonly />
             </label>
             =
             <label class="flex" for="num-3">
               C
-              <input type="number" id="num-3" placeholder="C" step="0.01" />
+              <input type="text" id="num-3" placeholder="C" readonly />
             </label>
             :
             <label class="flex" for="num-4">
               D
-              <input type="number" id="num-4" placeholder="D" step="0.01" />
+              <input type="text" id="num-4" placeholder="D" readonly />
             </label>
           </article>
         </form>
@@ -73,13 +73,13 @@
           <button data-num=".">.</button>
         </article>
 
-        <button id="forward">></button>
-        <button id="backward"><</button>
         <button id="negative">-</button>
-        
+        <button id="forward">&raquo;</button>
+        <button id="backward">&laquo;</button>
+
+        <button form="ratio-form" type="submit" id="submit">=</button>
         <button form="ratio-form" type="reset" id="clear-all">clear all</button>
         <button form="ratio-form" type="reset" id="clear">clear</button>
-        <button form="ratio-form" type="submit" id="submit">=</button>
       </section>
     </main>
     <footer>

@@ -1,7 +1,7 @@
 :root {
     --dark: rgb(38, 49, 60);
     --light: rgb(130 188 183);
-    --overlay: rgba(101, 47, 88, 0.5);
+    --overlay: rgba(142, 88, 129, 0.5);
     --accent: rgb(52 157 150);
     --k: 1rem;
 }
@@ -143,9 +143,6 @@ main,
     overflow: hidden;
 }
 
-#submit {
-    flex-grow: 1;
-}
 
 #ratio-form {
     border-radius: .5rem;
@@ -189,13 +186,18 @@ main,
         grid-template-columns: repeat(3, 1fr);
         gap: var(--k);
         grid-column: span 3;
-        grid-row: span 3;
+        grid-row: span 4;
     }
 
     & [data-num="0"],
     #clear-all {
         grid-column: span 2;
     }
+
+    & #submit {
+        grid-row: span 2;
+    }
+    
 }
 
 @media screen and (min-width: 750px) {

@@ -13,6 +13,13 @@ class Display extends Memory {
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
     }
+
+    this.numBtns = [];
+    const numBtnsElements = document.querySelectorAll("#number-btns button[data-num]");
+    numBtnsElements.forEach(btn => {
+      const numValue = btn.getAttribute("data-num");
+      this.numBtns.push({element: btn, value: numValue})
+    })
   }
 
   // methods
@@ -76,6 +83,13 @@ class Display extends Memory {
       el.style.width = "1rem"
       el.style.color = "var(--dark)"
     });
+  }
+
+  handleNumPad(num) {
+    console.log("clicked: " + num)
+    console.log(this.numEls)
+    // hardcoded test. dynamic version will use a boolean data value to target specific input el & allow for multi digit numbers
+    this.numEls[0].value = num
   }
 }
 
