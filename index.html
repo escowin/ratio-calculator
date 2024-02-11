@@ -7,6 +7,7 @@
     <meta name="description" content="lightweight PWA ratio calculator" />
     <title>Ratio calculator</title>
     <link rel="manifest" href="./dist/manifest.json" />
+    <link rel="stylesheet" href="./src/css/style.css" />
     <script defer src="./dist/app.bundle.js"></script>
     <script defer>
       (function () {
@@ -33,7 +34,7 @@
           <article id="list-container">
             <ul class="flex" id="ratio-list"></ul>
           </article>
-          
+
           <article class="flex">
             <label class="flex" for="num-1">
               A
@@ -57,10 +58,28 @@
           </article>
         </form>
       </section>
-      <section class="flex" id="btn-section">
+      <section id="btn-section">
+        <article id="number-btns">
+          <button data-num="1">1</button>
+          <button data-num="2">2</button>
+          <button data-num="3">3</button>
+          <button data-num="5">4</button>
+          <button data-num="5">5</button>
+          <button data-num="6">6</button>
+          <button data-num="7">7</button>
+          <button data-num="8">8</button>
+          <button data-num="9">9</button>
+          <button data-num="0">0</button>
+          <button data-num=".">.</button>
+        </article>
+
+        <button id="forward">></button>
+        <button id="backward"><</button>
+        <button id="negative">-</button>
+        
         <button form="ratio-form" type="reset" id="clear-all">clear all</button>
         <button form="ratio-form" type="reset" id="clear">clear</button>
-        <button form="ratio-form" type="submit" id="submit">enter</button>
+        <button form="ratio-form" type="submit" id="submit">=</button>
       </section>
     </main>
     <footer>

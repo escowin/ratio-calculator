@@ -1,7 +1,7 @@
 :root {
     --dark: rgb(38, 49, 60);
-    --light: rgb(189, 206, 215);
-    --overlay: rgba(134, 144, 147, 0.5);
+    --light: rgb(130 188 183);
+    --overlay: rgba(101, 47, 88, 0.5);
     --accent: rgb(52 157 150);
     --k: 1rem;
 }
@@ -73,7 +73,7 @@ footer {
     }
 
     & label {
-        border-bottom: 2px solid var(--overlay);
+        border-bottom: 2px solid var(--dark);
         color: transparent;
     }
 }
@@ -177,6 +177,24 @@ main,
         grid-template-columns: 1fr auto;
         align-items: baseline;
         gap: var(--k);
+    }
+}
+
+#btn-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    & #number-btns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--k);
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+
+    & [data-num="0"],
+    #clear-all {
+        grid-column: span 2;
     }
 }
 
