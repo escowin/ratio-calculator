@@ -8,11 +8,13 @@ display.displayDate();
 display.clearBtn.addEventListener("click", () => display.resetInput());
 display.clearAllBtn.addEventListener("click", () => display.resetMemoryDisplay());
 display.form.addEventListener("submit", (e) => display.displayNum(e));
+display.nextBtn.addEventListener("click", () => display.handleInputSelection(1));
+display.prevBtn.addEventListener("click", () => display.handleInputSelection(-1));
+
 // display.numEls.forEach((el) => {
 //   el.addEventListener("input", (el) => display.adjustWidth(el.target));
 // });
 
-
-display.numBtns.forEach(el => {
+display.numBtns.forEach((el) => {
   el.element.addEventListener("click", () => display.handleNumPad(el.value));
-})
+});

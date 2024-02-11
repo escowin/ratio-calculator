@@ -9,6 +9,8 @@ class Display extends Memory {
     this.listEl = document.getElementById("ratio-list");
     this.clearBtn = document.getElementById("clear");
     this.clearAllBtn = document.getElementById("clear-all");
+    this.nextBtn = document.getElementById("next");
+    this.prevBtn = document.getElementById("previous");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
@@ -88,19 +90,37 @@ class Display extends Memory {
   }
 
   handleNumPad(num) {
-    console.log("clicked: " + num);
-    console.log(this.numEls);
-
     // Find the input element with data-focus="true"
     const focusedInput = this.numEls.find(
       (input) => input.dataset.focus === "true"
     );
-    console.log(focusedInput);
 
     // Allows multiple digits and only one decimal point in input element
     num === "." && focusedInput.value.includes(".")
       ? console.log("decimal point already exists in input value")
       : (focusedInput.value += num);
+  }
+
+  handleInputSelection(value) {
+    // Finds the index of the input element with data-focus="true"
+    const currentIndex = this.numEls.findIndex(
+      (input) => input.dataset.focus === "true"
+    );
+
+    // If currentIndex is -1, no input element is currently focused, so return
+    if (currentIndex === -1) {
+      console.error("No input element is currently focused.");
+      return;
+    }
+
+    // Calculates the index of the adjacent input element based on the value of `value`
+    const newIndex =
+      (currentIndex + value + this.numEls.length) % this.numEls.length;
+
+    // Sets the data-focus attribute of the current input element to "false"
+    this.numEls[currentIndex].dataset.focus = "false";
+    // Sets the data-focus attribute of the adjacent input element to "true"
+    this.numEls[newIndex].dataset.focus = "true";
   }
 }
 
