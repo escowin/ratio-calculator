@@ -11,7 +11,6 @@ class Display extends Memory {
     this.clearAllBtn = document.getElementById("clear-all");
     this.nextBtn = document.getElementById("next");
     this.prevBtn = document.getElementById("previous");
-    // this.negBtn = document.getElementById("negative");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
@@ -57,12 +56,12 @@ class Display extends Memory {
   // dom | input-related
   async displayNum(e) {
     e.preventDefault();
-    // extracts, destructures, and assigns values from dom elements to instantiated object
+    // Extracts, destructures, and assigns values from dom elements to instantiated object
     const nums = this.numEls.map((numEl) => numEl.value);
     const [num1, num2, num3, num4] = nums;
     const calculator = new Calculator(num1, num2, num3, num4);
 
-    // displays the calculated remaining ratio value
+    // Displays the calculated remaining ratio value
     const emptyEl = this.numEls.find((el) => el.value === "");
     emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
     emptyEl.style.width = `${emptyEl.value.length}rem`;
@@ -106,7 +105,6 @@ class Display extends Memory {
       // For other characters, simply append them to the value
       focusedInput.value += num;
     }
-    console.log(focusedInput.value);
   }
 
   handleInputSelection(value) {
@@ -115,23 +113,16 @@ class Display extends Memory {
       (input) => input.dataset.focus === "true"
     );
 
-    // If currentIndex is -1, no input element is currently focused, so return
-    if (currentIndex === -1) {
-      console.error("No input element is currently focused.");
-      return;
-    }
-
     // Calculates the index of the adjacent input element based on the value of `value`
-    const newIndex =
-      (currentIndex + value + this.numEls.length) % this.numEls.length;
+    let newIndex = currentIndex + value;
 
-    // Sets the data-focus attribute of the current input element to "false"
-    this.numEls[currentIndex].dataset.focus = "false";
-    this.numEls[currentIndex].style = "";
+    // Handles wrap-around for newIndex values
+    newIndex = (newIndex + this.numEls.length) % this.numEls.length;
 
-    // Sets the data-focus attribute of the adjacent input element to "true"
-    this.numEls[newIndex].dataset.focus = "true";
-    this.numEls[newIndex].style = "var(--focus)";
+    // Sets the data-focus attribute to "false" for all other numEls array objects
+    this.numEls.forEach((input, index) => {
+      input.dataset.focus = index === newIndex ? "true" : "false";
+    });
   }
 }
 
