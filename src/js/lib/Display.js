@@ -11,16 +11,14 @@ class Display extends Memory {
     this.clearAllBtn = document.getElementById("clear-all");
     this.nextBtn = document.getElementById("next");
     this.prevBtn = document.getElementById("previous");
-    this.negBtn = document.getElementById("negative");
+    // this.negBtn = document.getElementById("negative");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
     }
 
     this.numBtns = [];
-    const numBtnsElements = document.querySelectorAll(
-      "#number-btns button[data-num]"
-    );
+    const numBtnsElements = document.querySelectorAll("button[data-num]");
     numBtnsElements.forEach((btn) => {
       const numValue = btn.getAttribute("data-num");
       this.numBtns.push({ element: btn, value: numValue });
@@ -96,10 +94,35 @@ class Display extends Memory {
       (input) => input.dataset.focus === "true"
     );
 
+    console.log(num);
+
+    // // Allows multiple digits and only one decimal point in input element
+    // num === "." && focusedInput.value.includes(".")
+    //   ? console.log("decimal point already exists in input value")
+    //   : (focusedInput.value += num);
+
+    // // entering two negatives will remove the existing "-" from the string
+    // // if the value does not currently have a "-", then "-" will be included as the first character in the string
+    // num === "-" && focusedInput.value.includes("-")
+    //   ? focusedInput.value.replace(/^-/, "")
+    //   : num + focusedInput.value;
+
     // Allows multiple digits and only one decimal point in input element
-    num === "." && focusedInput.value.includes(".")
-      ? console.log("decimal point already exists in input value")
-      : (focusedInput.value += num);
+    if (num === "." && focusedInput.value.includes(".")) {
+      console.log("Decimal point already exists in input value");
+    } else if (num === "-") {
+      if (focusedInput.value.includes("-")) {
+        // If "-" already exists, remove it
+        focusedInput.value = focusedInput.value.replace(/^-/, "");
+      } else {
+        // If "-" doesn't exist, prepend it to the value
+        focusedInput.value = "-" + focusedInput.value;
+      }
+    } else {
+      // For other characters, simply append them to the value
+      focusedInput.value += num;
+    }
+    console.log(focusedInput.value);
   }
 
   handleInputSelection(value) {
@@ -124,7 +147,7 @@ class Display extends Memory {
 
     // Sets the data-focus attribute of the adjacent input element to "true"
     this.numEls[newIndex].dataset.focus = "true";
-    this.numEls[newIndex].style = "var(--focus)"
+    this.numEls[newIndex].style = "var(--focus)";
   }
 }
 

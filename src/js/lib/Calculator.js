@@ -21,6 +21,10 @@ class Calculator {
         return console.error("submitted 4 num values");
     }
   }
+
+  calculateNeg(num1, num2) {
+    return !num1 ? 0 * num2 : num1 * num2
+  }
 }
 
 module.exports = Calculator;
