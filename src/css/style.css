@@ -130,6 +130,7 @@ footer {
     overflow-y: scroll;
 
     & #ratio-list {
+        color: var(--calculated);
         flex-direction: column;
         font-size: .85rem;
         gap: calc(var(--k)/2);

@@ -5,22 +5,20 @@
 [Repo](https://github.com/escowin/ratio-calculator) |
 [Live URL](https://escowin.github.io/ratio-calculator)
     
-A lightweight PWA ratio calculator that calculates the remaining value from three given input-values. The development of this app was an exercise in array iteration, object oriented programming (OOP), and test driven development (TDD) in order to streamline a codebase built around separation of concerns.
+The Ratio Calculator is a lightweight Progressive Web App (PWA) designed to compute the remaining value from three provided input values. It was developed as a personal challenge in utilizing array iteration, object-oriented programming (OOP) principles, and implementing test-driven development (TDD) practices. The primary goal was to create a streamlined codebase with a clear separation of concerns.
 
-This app came about as a reaction to previous PWA development. When running builds for [sun-tracker](https://github.com/escowin/sun-tracker), I took notice of the size `node_modules` would occupy in each bundle. By not using dependencies in this application, I have kept the file size of `app.bundle.js` to a minumum, while maximizing the legibility of the source codebase by pushing my understanding of fundamental JavaScript, OOP, TDD, and client-side memory persistence.  
+### Motivation
+This app came about as a reaction to previous PWA development. When running builds for [sun-tracker](https://github.com/escowin/sun-tracker), I noticed `nodule_modules/` would take up a considerable size relative to the rest of the codebase, due to its third-party depenendcies. By avoiding external dependencies in this app, the file size of `app.bundle.js` has been kept to a minimum. Additionally, this approach maximized the readability of the source codebase, emphasizing proficiency in fundamental JavaScript, OOP, TDD, and client-side memory management.
 
 ### Development highlights:
-- array variable objects defined through `for` loop iteration
-- maintained data consitency between dom & calculator through iteration, array destructuring, object instantiation, and strict equality.
-- building up application logic through TDD
-- maintaining value synchronicity between class constructor, `localStorage`, and DOM variables through successive calls.
+- Utilization of array variable objects created via for loop iteration.
+- Ensuring data consistency between the DOM and calculator logic through array destructuring, object instantiation, and strict equality.
+- Construction of application logic guided by TDD principles.
+- Maintenance of value synchronicity among class constructors, the IndexedDB database, and DOM variables through iterative calls.
+- Leveraging the data-* attribute to facilitate setting values for form input elements via a UI keypad.
 
 ### Future development:
-- Class inheritance between `Display` & `Calculator`
-- Parameter elmination within `Display` class methods
-- Streamline statement evaluations within `Calculator` method
-- Expand `jest-environment jsdom` TDD
-- `IndexedDB` implementation in place of `localStorage`
+- Implementation of keyboard event listeners to enhance user input accessibility.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -53,12 +51,18 @@ Run the following command to run app locally:
 $ npm run start:dev
 ```
 
-![desktop](./assets/img/display.jpg)
+![desktop](./assets/img/ratio-calculator-lg.jpg)
+![mobile](./assets/img/ratio-calculator-sm.jpg)
+
+
+Using the keypad
 
 ## Features
-- Memory persistence
-- Offline functionality
-- PWA Optimization
+- **Client-Side Database Memory Persistence:** Store data locally for seamless user experience across sessions.
+- **Offline Functionality:** Enjoy uninterrupted usage even without an internet connection.
+- **PWA Optimization:** Fast loading times and responsiveness thanks to Progressive Web App technology.
+- **Accessible UI Touch Keypad:** Utilize an intuitive touch keypad with ARIA-label accessibility, enhancing usability for all users.
+- **Appealing Responsive Design:** UI offers clear visual cues for focused elements, improving overall user experience under a variety of displays.
 
 ![lighthouse audit](./assets/img/lighthouse-audit.jpg)
 
@@ -67,6 +71,7 @@ $ npm run start:dev
 - Frameworks: [Node](https://nodejs.org/en), [Jest](https://jestjs.io/)
 - Libraries: [webpack](https://github.com/webpack/webpack), et al.
 - Graphics: [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
+- Database: [indexedDB](https://developer.mozilla.org/en-US/docs/Glossary/IndexedDB)
 
 ## Author
 ### Edwin Escobar
