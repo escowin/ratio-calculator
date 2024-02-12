@@ -58,12 +58,12 @@
           </article>
         </form>
       </section>
-      <section id="btn-section">
+      <section id="keypad">
         <article id="number-btns">
           <button data-num="1">1</button>
           <button data-num="2">2</button>
           <button data-num="3">3</button>
-          <button data-num="5">4</button>
+          <button data-num="4">4</button>
           <button data-num="5">5</button>
           <button data-num="6">6</button>
           <button data-num="7">7</button>
@@ -73,13 +73,27 @@
           <button data-num=".">.</button>
         </article>
 
-        <button id="negative" aria-label="negative sign">-</button>
-        <button id="next" aria-label="next">&raquo;</button>
-        <button id="previous" aria-label="previous">&laquo;</button>
+        <article id="action-btns">
+          <button id="negative" aria-label="negative sign">-</button>
+          <button id="next" aria-label="next">&raquo;</button>
+          <button id="previous" aria-label="previous">&laquo;</button>
 
-        <button form="ratio-form" type="submit" id="submit" aria-label="submit form">=</button>
-        <button form="ratio-form" type="reset" id="clear-all">clear all</button>
-        <button form="ratio-form" type="reset" id="clear">clear</button>
+          <button
+            form="ratio-form"
+            type="submit"
+            id="submit"
+            aria-label="submit form"
+          >
+            =
+          </button>
+        </article>
+
+        <article id="memory-btns">
+          <button form="ratio-form" type="reset" id="clear-all">
+            clear memory
+          </button>
+          <button form="ratio-form" type="reset" id="clear">clear</button>
+        </article>
       </section>
     </main>
     <footer>

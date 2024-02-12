@@ -11,6 +11,7 @@ class Display extends Memory {
     this.clearAllBtn = document.getElementById("clear-all");
     this.nextBtn = document.getElementById("next");
     this.prevBtn = document.getElementById("previous");
+    this.negBtn = document.getElementById("negative");
     this.numEls = [];
     for (let i = 1; i <= 4; i++) {
       this.numEls.push(document.getElementById(`num-${i}`));
@@ -119,8 +120,11 @@ class Display extends Memory {
 
     // Sets the data-focus attribute of the current input element to "false"
     this.numEls[currentIndex].dataset.focus = "false";
+    this.numEls[currentIndex].style = "";
+
     // Sets the data-focus attribute of the adjacent input element to "true"
     this.numEls[newIndex].dataset.focus = "true";
+    this.numEls[newIndex].style = "var(--focus)"
   }
 }
 
