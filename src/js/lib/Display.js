@@ -94,26 +94,14 @@ class Display extends Memory {
       (input) => input.dataset.focus === "true"
     );
 
-    console.log(num);
-
-    // // Allows multiple digits and only one decimal point in input element
-    // num === "." && focusedInput.value.includes(".")
-    //   ? console.log("decimal point already exists in input value")
-    //   : (focusedInput.value += num);
-
-    // // entering two negatives will remove the existing "-" from the string
-    // // if the value does not currently have a "-", then "-" will be included as the first character in the string
-    // num === "-" && focusedInput.value.includes("-")
-    //   ? focusedInput.value.replace(/^-/, "")
-    //   : num + focusedInput.value;
-
     // Allows multiple digits and only one decimal point in input element
     if (num === "." && focusedInput.value.includes(".")) {
       console.log("Decimal point already exists in input value");
     } else if (num === "-") {
+      // Prepends "-" to string, but will remove "-" if negative is entered again
       focusedInput.value = focusedInput.value.includes("-")
         ? focusedInput.value.replace(/^-/, "")
-        : "-" + focusedInput.value;
+        : num + focusedInput.value;
     } else {
       // For other characters, simply append them to the value
       focusedInput.value += num;
