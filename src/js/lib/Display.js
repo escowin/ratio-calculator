@@ -111,13 +111,9 @@ class Display extends Memory {
     if (num === "." && focusedInput.value.includes(".")) {
       console.log("Decimal point already exists in input value");
     } else if (num === "-") {
-      if (focusedInput.value.includes("-")) {
-        // If "-" already exists, remove it
-        focusedInput.value = focusedInput.value.replace(/^-/, "");
-      } else {
-        // If "-" doesn't exist, prepend it to the value
-        focusedInput.value = "-" + focusedInput.value;
-      }
+      focusedInput.value = focusedInput.value.includes("-")
+        ? focusedInput.value.replace(/^-/, "")
+        : "-" + focusedInput.value;
     } else {
       // For other characters, simply append them to the value
       focusedInput.value += num;
