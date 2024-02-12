@@ -16,7 +16,6 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 0;
     margin: 0;
-    outline: 1px dotted white;
 }
 
 ::-webkit-scrollbar-button {
@@ -82,7 +81,6 @@ footer {
 #form-section {
     flex-grow: 1;
     overflow: hidden;
-    max-width: 50vw;
 }
 
 #ratio-form {
@@ -101,17 +99,17 @@ footer {
 
     & label {
         flex-direction: column;
-        /* border-bottom: 2px solid var(--dark); */
         color: transparent;
 
         & input {
             border: none;
+            border-radius: .25rem;
             outline: none;
             text-align: center;
-            width: 5rem;
+            width: 4rem;
             transition: 1s background-color, 1s color;
         }
-        
+
         & input[data-focus="false"] {
             background-color: transparent;
             border-bottom: 2px solid var(--accent);
@@ -145,7 +143,6 @@ footer {
             gap: var(--k);
         }
     }
-
 }
 
 /* Calculator keypad */
@@ -224,16 +221,17 @@ input {
 
 @media screen and (min-width: 750px) {
     #keypad {
-        flex-direction: column-reverse;
         flex-grow: 2;
-        flex-wrap: wrap;
     }
 }
 
 @media screen and (min-width: 1024px) {
     main {
         flex-direction: row;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+
+        & #form-section {
+            flex-grow: 0;
+            width: 40vw;
+        }
     }
 }

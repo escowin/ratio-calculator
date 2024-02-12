@@ -79,16 +79,19 @@ class Display extends Memory {
 
   adjustWidth(numEl) {
     let num = numEl.value.length;
-    if (num > 5) {
+    if (num > 4) {
       numEl.style.width = `${num}rem`;
     }
   }
 
+  // Resets input elements to initial conditions
   resetInput() {
     this.numEls.forEach((el) => {
-      el.style.width = "5rem";
+      el.style.width = "4rem";
       el.style.color = "";
+      el.dataset.focus = "false";
     });
+    this.numEls[0].dataset.focus = "true"
   }
 
   // Allows users to compose multi-digit numbers within an input element
