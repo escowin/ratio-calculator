@@ -3,8 +3,9 @@
     --dark: rgb(23 33 43);
     --light: rgb(74 148 141);
     --num-btns: rgb(16 34 52);
+    --calculated: rgb(99, 216, 207);
     --overlay: rgba(142, 88, 129, 0.5);
-    --focus: rgb(236, 185, 228);
+    --pink: rgb(236, 185, 228);
     --accent: rgb(62 37 88);
     --k: 1rem;
 }
@@ -15,6 +16,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 0;
     margin: 0;
+    outline: 1px dotted white;
 }
 
 ::-webkit-scrollbar-button {
@@ -80,6 +82,7 @@ footer {
 #form-section {
     flex-grow: 1;
     overflow: hidden;
+    max-width: 50vw;
 }
 
 #ratio-form {
@@ -98,17 +101,27 @@ footer {
 
     & label {
         flex-direction: column;
-        border-bottom: 2px solid var(--dark);
+        /* border-bottom: 2px solid var(--dark); */
         color: transparent;
 
         & input {
-            background-color: transparent;
             border: none;
-            color: var(--dark);
             outline: none;
             text-align: center;
-            width: 4.5rem;
-            transition: 1s background-color;
+            width: 5rem;
+            transition: 1s background-color, 1s color;
+        }
+        
+        & input[data-focus="false"] {
+            background-color: transparent;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        & input[data-focus="true"] {
+            background-color: var(--overlay);
+            border-bottom: 2px solid var(--pink);
+            color: var(--pink);
         }
     }
 }
@@ -190,11 +203,11 @@ button:active,
 button:hover,
 button:focus {
     background-color: var(--accent);
-    color: var(--focus);
+    color: var(--pink);
 }
 
 button:focus {
-    outline: 2px solid var(--focus);
+    outline: 2px solid var(--pink);
 }
 
 /* IV. Typography */

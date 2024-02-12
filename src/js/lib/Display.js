@@ -24,14 +24,15 @@ class Display extends Memory {
     });
   }
 
-  // methods
-  // dom | memory-related
+  // Methods
+  // Displays current year for copyright info
   displayDate() {
     this.dateEl.innerText = this.year;
     console.log(`    \u00A9 ${this.year} Edwin M. Escobar
     https://github.com/escowin/ratio-calculator`);
   }
 
+  // Displays the list of ratios found in the indexedDB database
   displayMemory() {
     const listEl = this.listEl;
     listEl.innerHTML = "";
@@ -44,6 +45,7 @@ class Display extends Memory {
     });
   }
 
+  // Clears the list of ratios found in the indexedDB database
   async resetMemoryDisplay() {
     try {
       await this.clearMemory();
@@ -53,21 +55,21 @@ class Display extends Memory {
     }
   }
 
-  // dom | input-related
+  // Displays the calculated ratio
   async displayNum(e) {
     e.preventDefault();
     // Extracts, destructures, and assigns values from dom elements to instantiated object
-    const nums = this.numEls.map((numEl) => numEl.value);
-    const [num1, num2, num3, num4] = nums;
-    const calculator = new Calculator(num1, num2, num3, num4);
-
-    // Displays the calculated remaining ratio value
-    const emptyEl = this.numEls.find((el) => el.value === "");
-    emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
-    emptyEl.style.width = `${emptyEl.value.length}rem`;
-    emptyEl.style.color = "var(--accent)";
-
     try {
+      const nums = this.numEls.map((numEl) => numEl.value);
+      const [num1, num2, num3, num4] = nums;
+      const calculator = new Calculator(num1, num2, num3, num4);
+
+      // Displays the calculated remaining ratio value
+      const emptyEl = this.numEls.find((el) => el.value === "");
+      emptyEl.value = Math.round(calculator.calculateNum() * 100) / 100;
+      emptyEl.style.width = `${emptyEl.value.length}rem`;
+      emptyEl.style.color = "var(--calculated)";
+
       await this.saveRatio(this.numEls);
       this.displayMemory();
     } catch (err) {
@@ -77,16 +79,19 @@ class Display extends Memory {
 
   adjustWidth(numEl) {
     let num = numEl.value.length;
-    numEl.style.width = `${num}rem`;
+    if (num > 5) {
+      numEl.style.width = `${num}rem`;
+    }
   }
 
   resetInput() {
     this.numEls.forEach((el) => {
       el.style.width = "5rem";
-      el.style.color = "var(--dark)";
+      el.style.color = "";
     });
   }
 
+  // Allows users to compose multi-digit numbers within an input element
   handleNumPad(num) {
     // Find the input element with data-focus="true"
     const focusedInput = this.numEls.find(
@@ -107,6 +112,7 @@ class Display extends Memory {
     }
   }
 
+  // Allows users to move back & forth between input elements
   handleInputSelection(value) {
     // Finds the index of the input element with data-focus="true"
     const currentIndex = this.numEls.findIndex(

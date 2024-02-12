@@ -19,3 +19,6 @@ display.prevBtn.addEventListener("click", () =>
 display.numBtns.forEach((el) => {
   el.element.addEventListener("click", () => display.handleNumPad(el.value));
 });
+display.numEls.forEach((el) => {
+  el.addEventListener("input", (el) => display.adjustWidth(el.target));
+});
